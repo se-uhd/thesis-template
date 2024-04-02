@@ -326,6 +326,9 @@
 \newcommand{\studentnumber}{12345678}
 \newcommand{\examiner}{Prof. Dr. Sebastian Baltes}
 \newcommand{\secondexaminer}{Title Firstname Lastname}
+\newcommand{\supervisor}{Prof. Dr. Sebastian Baltes} % usually a doctoral or postdoctoral researcher
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 \selectlanguage{english}
@@ -399,10 +402,13 @@
 	
 \noindent
 \begin{tabularx}{\textwidth}{l X l}
-   Examiner:     & & Second Examiner: \\
+   Examiner:     & & Supervisor: \\
    \\
-   \examiner         & & \secondexaminer \\
-   {\scriptsize (University of Bayreuth, Germany)} & & {\scriptsize (University of Bayreuth, Germany)}
+   \examiner         & & \supervisor \\
+   {\scriptsize (University of Bayreuth, Germany)} & & {\scriptsize (University of Bayreuth, Germany)} \\
+   \\
+   \secondexaminer && \\
+   {\scriptsize (University of Bayreuth, Germany)} & & 
 \end{tabularx}
 
 \newpage

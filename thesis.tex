@@ -1,0 +1,490 @@
+\documentclass[
+	pdftex,
+	%draft,
+	%final,
+	12pt,
+	a4paper,
+	parskip=relative,
+	twoside,
+	footinclude=false,
+	footheight=0mm,
+	toc=bibliography,
+	toc=listof
+	%BCOR=8mm,
+	%DIV=12
+]{scrbook}
+
+% language and encoding
+\usepackage[utf8]{inputenc}
+\usepackage[english, german]{babel}
+\usepackage[T1]{fontenc}
+
+% references
+\usepackage[square, comma, sort, numbers]{natbib} % sort&compress
+
+% citation (not compatible with natbib)
+%\usepackage{cite}
+
+% page margins
+\usepackage[paper=a4paper, inner=30mm, outer=20mm, top=30mm, bottom=30mm]{geometry}
+
+% customize dictum format:
+%\setkomafont{dictumtext}{\itshape\normalsize}
+%\setkomafont{dictumauthor}{\normalfont\small}
+%\renewcommand*\dictumwidth{\linewidth}
+%\renewcommand*\dictumauthorformat[1]{--- #1}
+%\renewcommand*\dictumrule{}
+
+% fonts
+%\usepackage{mathpazo} % Palatino font (serif)
+\usepackage{fourier} % Utopia font (serif)
+\usepackage[scaled=0.95]{helvet} % Helvetica font (sans-serif)
+\usepackage{courier} % Courier Font (typewriter)
+%\usepackage{eulervm} % Euler font (math) -> lead to problems with = and > characters in math mode
+
+% recalculate the page layout with a calculated DIV value
+% (see https://tex.stackexchange.com/a/183839)
+%\recalctypearea 
+
+% color
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} % http://en.wikibooks.org/wiki/LaTeX/Colors
+
+% disable single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 10000
+% disable single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 10000 \displaywidowpenalty = 10000
+
+% configure graphics
+%\usepackage[pdftex]{graphicx}
+%\graphicspath{{figures/}}
+%\DeclareGraphicsExtensions{.pdf,.png}
+
+% outlined characters
+\usepackage{contour}
+\contourlength{0.1pt}
+
+% math formulas
+\usepackage{amsmath}
+\usepackage{amssymb} 
+\usepackage{eucal} % more curly versions for \mathcal{...}
+
+% scientific notation
+\usepackage{siunitx}
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
+
+% unnumbered theorem-like environment for definitions
+\usepackage{amsthm}
+\newtheoremstyle{definitiontight}% name
+  {.5\baselineskip\@plus.2\baselineskip\@minus.2\baselineskip}% Space above
+  {.6\baselineskip\@plus.2\baselineskip\@minus.2\baselineskip}% Space below
+  {}% Body font
+  {}%Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}%  Thm head font
+  {.}%       Punctuation after thm head
+  {.5em}%      Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {}%       Thm head spec
+\theoremstyle{definitiontight}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{hypothesis}{Hypothesis}[section]
+% https://tex.stackexchange.com/a/347781/100364
+\renewcommand{\thehypothesis}{\arabic{hypothesis}}% Remove section from theorem counter representation
+
+% colors for boxes, listings, und headers
+\definecolor{light-gray}{gray}{0.97}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{background-gray}{gray}{0.96}
+
+% configure first page of each chapter (Fabian Beck, Rainer Lutz, Benjamin Biegel)
+\usepackage{sectsty}
+\makeatletter% siehe De-TeX-FAQ
+\renewcommand*{\chapterformat}{
+  \begingroup% damit \unitlength aenderung lokal bleibt
+    \setlength{\unitlength}{1mm}%
+    \begin{picture}(20,20)(0,3)
+      \setlength{\fboxsep}{0pt}
+       \put(0,0){\makebox(20,20){\rule{20\unitlength}{20\unitlength}}}%
+       %\put(0,21){\makebox(20,20){\rule{20\unitlength}{20\unitlength}}}
+      % Trennlinie
+      \put(22,13){\linethickness{0.5pt}\line(1,0){\dimexpr
+          \textwidth-24\unitlength\relax\@gobble}}
+      % Kapitelnummer    
+      \put(-1.4,0.8){\makebox(18,18)[r]{%
+          \color{white}\fontsize{22\unitlength}{28\unitlength}\selectfont\thechapter
+          %\kern-.05em% Ziffer in der Zeichenzelle nach rechts schieben
+        }}
+      % Kapitel Schriftzug
+      \put(20,13){\makebox(\dimexpr
+          \textwidth-18\unitlength\relax\@gobble,\ht\strutbox\@gobble)[l]{%
+            \ \normalsize\color{black}\chapapp~\thechapter
+          }}
+    \end{picture} % <-- Leerzeichen ist hier beabsichtigt!
+  \endgroup
+}
+
+% fancy headings (Fabian Beck, Rainer Lutz, Benjamin Biegel)
+\usepackage{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\lehead{\colorbox{black}{\framebox[1cm][c]{\textcolor{white}{\textbf{\small\thepage}}}}\hspace{0.4cm}{\leftmark}}
+\rohead{\rightmark\hspace{0.4cm}\colorbox{black}{\framebox[1cm][c]{\textcolor{white}{\textbf{\small\thepage}}}}}
+\setkomafont{pageheadfoot}{\fontfamily{pag}\selectfont\footnotesize}
+\setheadsepline{0.5pt}
+\setfootsepline{0pt}
+\setfootbotline{0pt}
+\setlength{\footheight}{0pt}
+
+% Quotation
+\newcommand{\quotemarks}[1]{{\bfseries{#1}}}
+\newenvironment{chapter-quotation}[1]
+{\begin{quotation}\pushQED{#1}\noindent\slshape\quotemarks{``}\hspace{-2pt}}
+{\hspace{-2pt}\quotemarks{''}\fontsize{10}{10}\normalfont\\{ }\\\hspace*{\fill}---\popQED\end{quotation}}
+%\newenvironment{chapter-quotation}[1]
+%{\pushQED{#1}\begin{quotation}``''}
+%{\begin{flushright}---\popQED\end{flushright}\end{quotation}}
+
+% tables
+\usepackage{multirow}
+
+% editorial commands
+\usepackage[export]{adjustbox} % draw boxes around figures
+%\usepackage{amssymb,amsmath}
+\newcommand{\boxedtext}[1]{\fbox{\scriptsize\bfseries\textsf{#1}}}
+\newcommand{\nota}[2]{
+	\boxedtext{#1}
+		{\small$\blacktriangleright$\emph{\textsl{#2}}$\blacktriangleleft$}
+}
+\newcommand{\todo}[1]{{\color{red}\nota{TODO}{#1}}} % Wichtig: Vor oder nach \todo{} Leerzeichen entfernen
+%\renewcommand\todo[1]{} % todos ein-/ausschalten
+
+% line breaks in URLs
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+
+% allow to configure enumerate/itemize environment
+\usepackage{enumitem}
+
+% use \widthof{<string>} to use as length 
+\usepackage{calc}
+
+% boxes for results
+\usepackage[framemethod=tikz]{mdframed}
+\newmdenv[
+  innerleftmargin=7pt,
+  innerrightmargin=7pt,
+  skipabove=\baselineskip,
+  skipbelow=\baselineskip,
+  tikzsetting={draw=black,dashed,line width=0.5pt,dash pattern = on 4pt off 2pt},
+  linecolor=white,
+  backgroundcolor=white
+]{dashedbox}
+\newmdenv[
+  innerleftmargin=7pt,
+  innerrightmargin=7pt,
+  skipabove=\baselineskip,
+  skipbelow=\baselineskip,
+  tikzsetting={draw=black, line width=0.5pt},
+  linecolor=black,
+  backgroundcolor=white
+]{normalbox}
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  skipabove=\topsep,
+  skipbelow=\topsep,
+  innertopmargin=0pt,
+  innerbottommargin=0pt,
+  innerleftmargin=7pt,
+  innerrightmargin=0pt,
+  tikzsetting={draw=black, line width=3pt},
+  linecolor=black,
+  backgroundcolor=white
+]{verticalline}
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  skipabove=\baselineskip,
+  skipbelow=\baselineskip,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  innerleftmargin=12pt,
+  innerrightmargin=12pt,
+  tikzsetting={draw=black, line width=4pt},
+  linecolor=black,
+  backgroundcolor=background-gray
+]{verticalline-background}
+
+% source code listings
+\usepackage{listings}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  breaklines=true,
+  breakatwhitespace=true,
+  aboveskip=0.5\baselineskip,
+  belowskip=0.5\baselineskip,
+  xleftmargin=0.5\parindent,
+  xrightmargin=0pt,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{black},
+  commentstyle=\color{gray},
+  stringstyle=\color{gray},
+  emphstyle=\color{red},
+}
+
+\lstnewenvironment{java} {\lstset{
+  language=Java
+}}{}
+
+\lstnewenvironment{java-comment} {\lstset{
+  language=Java,
+  commentstyle=\color{black}
+}}{}
+
+\lstnewenvironment{xml} {\lstset{
+  language=XML
+}}{}
+
+\lstnewenvironment{code} {\lstset{
+}}{}
+
+\lstnewenvironment{regex} {\lstset{
+  alsoletter=\\()\{\}.,
+  morekeywords={String, long, if, return, format, B, int, Math, log}
+}}{}
+
+% gray background for table cells
+\definecolor{VeryLightGray}{rgb}{0.92,0.92,0.92}
+\newcommand{\graybg}{\cellcolor{VeryLightGray}}
+
+% nicer fractions
+\usepackage{nicefrac}
+
+% bold math symbols
+\usepackage{bm} 
+
+% dummy text
+\usepackage{lipsum}
+
+% configure captions
+\usepackage[font=small, labelfont=bf, labelsep=endash, format=plain]{caption}
+
+% tables
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+% Custom table column types (http://tex.stackexchange.com/questions/12703/how-to-create-fixed-width-table-columns-with-text-raggedright-centered-raggedlef)
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% references for sketches survey questionnaire
+\newcommand{\refRQ}[1]{\hfill {\tiny $\rightarrow RQ#1$}}
+\newcommand{\refTab}[2]{{\scriptsize(#1,#2)}}
+
+% captions for sketches paper
+\newcommand{\myCaption}[1]{\vspace{0.6\baselineskip}\noindent\textbf{\sffamily#1}\vspace{0.4\baselineskip}}
+
+% rotate figures and tables
+\usepackage{rotating}
+
+% subfigure
+\usepackage{subcaption}
+
+% configure quote environment
+\usepackage{quoting}
+\quotingsetup{font={small}}
+\quotingsetup{leftmargin=2em}
+\quotingsetup{rightmargin=2em}
+\quotingsetup{vskip=1.5ex}
+
+% formatting for code 
+\newcommand{\myCode}[1]{\texttt{\small#1}}
+
+% pseudocode
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+% appendix
+\usepackage[titletoc]{appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\thesistype}{Bachelor's Thesis} % Master's Thesis
+\newcommand{\thesistitle}{Thesis Title}
+\newcommand{\studentname}{Firstname Lastname}
+\newcommand{\monthyear}{April 2024}
+\newcommand{\studentnumber}{12345678}
+\newcommand{\examiner}{Prof. Dr. Sebastian Baltes}
+\newcommand{\secondexaminer}{Title Firstname Lastname}
+
+\begin{document}
+\selectlanguage{english}
+
+\frontmatter % roman numbers
+
+\begin{titlepage}
+
+	\begin{center}
+		\includegraphics[height=1.5cm]{figures/logos/logo-ubt.png}	
+		\hfill
+		\includegraphics[height=1.35cm]{figures/logos/logo-se-ubt.png}	
+	\end{center}
+	
+	\vspace{4cm}
+	
+	\begin{center}
+		{\large \thesistype}\\
+		\vspace{0.5cm}
+		{\LARGE\textsf{\thesistitle}}\\
+		\vspace{1cm}
+		{\large \studentname}\\
+	\end{center}
+
+	\vfill
+		
+	\begin{center}
+		{\large \monthyear}
+	\end{center}
+
+\end{titlepage}
+
+% empty page for double-sided printing
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+{
+\thispagestyle{empty}
+	
+\begin{center}
+	{\large University of Bayreuth}\\
+	\vspace{5pt}
+	Prof. Dr. Sebastian Baltes\\
+	Software Engineering Group\\
+	95440 Bayreuth, Germany\\
+\end{center}
+	
+\vspace{1pt}
+	
+\begin{center}
+	\thesistype \\
+	\vspace{11pt}
+	{\Large\textsf{\thesistitle}}\\
+	\vspace{15pt}
+	\studentname \\
+	{\scriptsize Student number: \studentnumber}\\
+	\vspace{15pt}
+	\monthyear \\
+\end{center}
+
+\vspace{10pt}
+	
+\begin{center}
+	{\large\sffamily{Abstract}}\\
+\end{center}
+\noindent \lipsum[1-2]
+
+\vfill
+	
+\noindent
+\begin{tabularx}{\textwidth}{l X l}
+   Examiner:     & & Second Examiner: \\
+   \\
+   \examiner         & & \secondexaminer \\
+   {\scriptsize (University of Bayreuth, Germany)} & & {\scriptsize (University of Bayreuth, Germany)}
+\end{tabularx}
+
+\newpage
+
+\chapter*{Acknowledgments}
+
+\lipsum[1-4]
+
+\tableofcontents
+
+%\cleardoublepage
+\clearpage
+
+\mainmatter % arabic numbers
+
+\chapter{Introduction}
+\label{ch:introduction}
+
+% you can use quotations at the start of each chapter using this environment:
+
+%\begin{chapter-quotation}{Ward Cunningham, The Pragmatic Programmer (2000)}
+%If you don't think carefully, you might think that programming is just typing statements in a programming language.
+%\end{chapter-quotation} 
+
+%exemplary paragraph with citations
+The software engineering research community is often criticized for not addressing the problems that practitioners actually face during their work~\cite{Briand2012}.
+At the same time, software developers' beliefs are rather based on their personal experience than on empirical findings~\cite{DevanbuZimmermannOthers2016}.
+
+\todo{Formulate problem statement and research question(s)}
+
+\chapter{Background}
+\label{ch:background}
+
+\chapter{Related Work}
+\label{ch:related-work}
+
+\chapter{Methodology}
+\label{ch:methodology}
+
+\chapter{Results}
+\label{ch:results}
+
+\chapter{Discussion}
+\label{ch:discussion}
+
+\chapter{Conclusion and Future Work}
+\label{ch:conclusion}
+
+\listoffigures
+ 
+\listoftables
+
+\bibliographystyle{plainnat}
+\bibliography{literature}
+
+\begin{appendices}
+
+\chapter{Selbständigkeitsserklärung}
+	
+\vspace{1cm}
+\noindent	
+Hiermit erkläre ich, dass ich die vorliegende Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
+Textpassagen, die wörtlich oder dem Sinn nach auf Publikationen oder Vorträgen anderer Autoren/-innen beruhen, sind als solche kenntlich gemacht.
+Die Arbeit wurde bisher nicht zur Erlangung eines akademischen Grades eingereicht. 
+	
+\vspace{1.5cm}
+	
+\noindent\begin{tabularx}{\textwidth}{XXXX}
+	&&& \\
+	\cline{1-1}\cline{4-4}\footnotesize\centering Ort und Datum		&&& \footnotesize\centering Unterschrift
+\end{tabularx}
+	
+\newpage
+
+\chapter{Zusammenfassung}
+
+\selectlanguage{german}
+
+\lipsum[1-4]
+
+\end{appendices}
+ 
+\backmatter
+
+\end{document}

@@ -1,0 +1,97 @@
+######################
+# OS generated files #
+######################
+*~
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trash
+.Trashes
+#Icon?
+ehthumbs.db
+Thumbs.db
+.TemporaryItems
+
+#########
+# Latex #
+#########
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.lol
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.out
+*.pdfsync
+*.ps
+*.snm
+*.synctex.gz
+*.synctex(busy
+*.toc
+*.vrb
+*.xdy
+*.tdo
+*.thm
+*.bib.bak
+*.cut
+*.loc
+*.soc
+
+##############
+# Java/Scala #
+##############
+*.class
+
+##########################
+# Webstorm/IntelliJ IDEA #
+##########################
+.idea/
+*.iml
+
+#########
+# Excel #
+#########
+~$*
+
+###########
+# RStudio #
+###########
+.Rhistory
+.RData
+
+#########
+# Maven #
+#########
+target/
+
+##########
+# JabRef #
+##########
+*.bak
+*.sav
+
+########
+# Misc #
+########
+thesis.pdf
+

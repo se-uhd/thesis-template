@@ -55,9 +55,7 @@
 \widowpenalty = 10000 \displaywidowpenalty = 10000
 
 % configure graphics
-%\usepackage[pdftex]{graphicx}
-%\graphicspath{{figures/}}
-%\DeclareGraphicsExtensions{.pdf,.png}
+\usepackage[pdftex]{graphicx}
 
 % outlined characters
 \usepackage{contour}
@@ -97,7 +95,7 @@
 \definecolor{cyan}{rgb}{0.0,0.6,0.6}
 \definecolor{background-gray}{gray}{0.96}
 
-% configure first page of each chapter (Fabian Beck, Rainer Lutz, Benjamin Biegel)
+% configure first page of each chapter (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel)
 \usepackage{sectsty}
 \makeatletter% siehe De-TeX-FAQ
 \renewcommand*{\chapterformat}{
@@ -124,7 +122,7 @@
   \endgroup
 }
 
-% fancy headings (Fabian Beck, Rainer Lutz, Benjamin Biegel)
+% fancy headings (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel)
 \usepackage{scrlayer-scrpage}
 \pagestyle{scrheadings}
 \clearscrheadfoot

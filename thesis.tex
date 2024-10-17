@@ -46,9 +46,6 @@
 % (see https://tex.stackexchange.com/a/183839)
 %\recalctypearea 
 
-% color
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} % http://en.wikibooks.org/wiki/LaTeX/Colors
-
 % disable single lines at the start of a paragraph (Schusterjungen)
 \clubpenalty = 10000
 % disable single lines at the end of a paragraph (Hurenkinder)
@@ -96,7 +93,6 @@
 \definecolor{background-gray}{gray}{0.96}
 
 % configure first page of each chapter (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel)
-\usepackage{sectsty}
 \makeatletter% siehe De-TeX-FAQ
 \renewcommand*{\chapterformat}{
   \begingroup% damit \unitlength aenderung lokal bleibt
@@ -122,17 +118,16 @@
   \endgroup
 }
 
-% fancy headings (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel)
+% fancy headings (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel, and ChatGPT)
 \usepackage{scrlayer-scrpage}
+\usepackage[listings=false]{scrhack} % suppress warnings
 \pagestyle{scrheadings}
-\clearscrheadfoot
+\clearpairofpagestyles 
 \lehead{\colorbox{black}{\framebox[1cm][c]{\textcolor{white}{\textbf{\small\thepage}}}}\hspace{0.4cm}{\leftmark}}
 \rohead{\rightmark\hspace{0.4cm}\colorbox{black}{\framebox[1cm][c]{\textcolor{white}{\textbf{\small\thepage}}}}}
 \setkomafont{pageheadfoot}{\fontfamily{pag}\selectfont\footnotesize}
-\setheadsepline{0.5pt}
-\setfootsepline{0pt}
-\setfootbotline{0pt}
-\setlength{\footheight}{0pt}
+\setlength{\footheight}{\baselineskip}
+\KOMAoptions{headsepline=0.5pt}
 
 % Quotation
 \newcommand{\quotemarks}[1]{{\bfseries{#1}}}
@@ -320,7 +315,7 @@
 \newcommand{\thesistype}{Bachelor's Thesis} % Master's Thesis
 \newcommand{\thesistitle}{Thesis Title}
 \newcommand{\studentname}{Firstname Lastname}
-\newcommand{\monthyear}{April 2024}
+\newcommand{\monthyear}{October 2024}
 \newcommand{\studentnumber}{12345678}
 \newcommand{\examiner}{Prof. Dr. Sebastian Baltes}
 \newcommand{\secondexaminer}{Title Firstname Lastname}

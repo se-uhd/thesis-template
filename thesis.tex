@@ -1,71 +1,66 @@
 \documentclass[
 	pdftex,
-	%draft,
-	%final,
+	%draft, % Prints a box at the end of overfull lines, changes behavior of some packages
+	final,
 	12pt,
 	a4paper,
-	parskip=relative,
-	twoside,
-	footinclude=false,
-	footheight=0mm,
-	toc=bibliography,
-	toc=listof
-	%BCOR=8mm,
-	%DIV=12
-]{scrbook}
+	parskip=false, % Paragraphs are identified by indentation of the first line by 1em
+	twoside, % Prepares the document for two-sided printing
+	footheight=0mm, % remove footer
+  	foot include=false,
+	toc=bibliography, % add bibliography to table of contents
+	toc=listof, % add list of figures and tables to table of contents
+]{scrbook} % documentation: https://de.mirrors.cicku.me/ctan/macros/latex/contrib/koma-script/doc/scrguide-en.pdf
 
 % language and encoding
-\usepackage[utf8]{inputenc}
-\usepackage[english, ngerman]{babel} % adjust this based on thesis language 
-\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % set document encoding to UTF-8
+\usepackage[main=english, ngerman]{babel} % adjust language depending on thesis language (affects hyphenation)
+\usepackage[T1]{fontenc} % set font encoding so that special characters are displayed correctly
 
-% references
-\usepackage[square, comma, sort, numbers]{natbib} % sort&compress
-
-% citation (not compatible with natbib)
-%\usepackage{cite}
-
-% page margins
-\usepackage[paper=a4paper, inner=30mm, outer=20mm, top=30mm, bottom=30mm]{geometry}
-
-% customize dictum format:
-%\setkomafont{dictumtext}{\itshape\normalsize}
-%\setkomafont{dictumauthor}{\normalfont\small}
-%\renewcommand*\dictumwidth{\linewidth}
-%\renewcommand*\dictumauthorformat[1]{--- #1}
-%\renewcommand*\dictumrule{}
+% configure graphics
+\usepackage[pdftex]{graphicx}
 
 % fonts
 %\usepackage{mathpazo} % Palatino font (serif)
 \usepackage{fourier} % Utopia font (serif)
 \usepackage[scaled=0.95]{helvet} % Helvetica font (sans-serif)
 \usepackage{courier} % Courier Font (typewriter)
-%\usepackage{eulervm} % Euler font (math) -> lead to problems with = and > characters in math mode
+%\usepackage{eulervm} % Euler font (math) -> led to problems with = and > characters in math mode
 
-% recalculate the page layout with a calculated DIV value
-% (see https://tex.stackexchange.com/a/183839)
-%\recalctypearea 
+% math formulas
+\usepackage{amsmath}
+\usepackage{amssymb} 
+\usepackage{eucal} % more curly versions for \mathcal{...}
+\usepackage{nicefrac} % % nicer fractions
+\usepackage{bm} % bold math symbols
+
+% outlined characters
+\usepackage{contour}
+\contourlength{0.1pt}
+
+% scientific notation
+\usepackage{siunitx}
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
+
+% page margins
+\usepackage[paper=a4paper, inner=30mm, outer=25mm, top=30mm, bottom=25mm]{geometry}
+
+% references
+\usepackage[square, comma, sort, numbers]{natbib} % sort&compress
+
+% citation commands (not compatible with natbib)
+%\usepackage{cite}
 
 % disable single lines at the start of a paragraph (Schusterjungen)
 \clubpenalty = 10000
 % disable single lines at the end of a paragraph (Hurenkinder)
 \widowpenalty = 10000 \displaywidowpenalty = 10000
 
-% configure graphics
-\usepackage[pdftex]{graphicx}
+% enables text wrapping around figures.
+\usepackage{wrapfig} 
 
-% outlined characters
-\usepackage{contour}
-\contourlength{0.1pt}
-
-% math formulas
-\usepackage{amsmath}
-\usepackage{amssymb} 
-\usepackage{eucal} % more curly versions for \mathcal{...}
-
-% scientific notation
-\usepackage{siunitx}
-\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
+% allows you to insert \FloatBarrier commands at places that floats should not move past, perhaps at every \section
+\usepackage{placeins}
 
 % unnumbered theorem-like environment for definitions
 \usepackage{amsthm}
@@ -129,7 +124,7 @@
 \setlength{\footheight}{\baselineskip}
 \KOMAoptions{headsepline=0.5pt}
 
-% Quotation
+% configure environment for quotations to be used at the beginning of a chapter (dictum)
 \newcommand{\quotemarks}[1]{{\bfseries{#1}}}
 \newenvironment{chapter-quotation}[1]
 {\begin{quotation}\pushQED{#1}\noindent\slshape\quotemarks{``}\hspace{-2pt}}
@@ -142,15 +137,14 @@
 \usepackage{multirow}
 
 % editorial commands
-\usepackage[export]{adjustbox} % draw boxes around figures
-%\usepackage{amssymb,amsmath}
 \newcommand{\boxedtext}[1]{\fbox{\scriptsize\bfseries\textsf{#1}}}
 \newcommand{\nota}[2]{
 	\boxedtext{#1}
 		{\small$\blacktriangleright$\emph{\textsl{#2}}$\blacktriangleleft$}
 }
-\newcommand{\todo}[1]{{\color{red}\nota{TODO}{#1}}} % Wichtig: Vor oder nach \todo{} Leerzeichen entfernen
-%\renewcommand\todo[1]{} % todos ein-/ausschalten
+\newcommand{\todo}[1]{{\color{red}\nota{TODO}{#1}}} % important: Remove spacing before and after \todo{}
+% uncomment the following line to hide all \todo{} commands
+%\renewcommand\todo[1]{}
 
 % line breaks in URLs
 \usepackage[hyphens]{url}
@@ -258,12 +252,6 @@
 \definecolor{VeryLightGray}{rgb}{0.92,0.92,0.92}
 \newcommand{\graybg}{\cellcolor{VeryLightGray}}
 
-% nicer fractions
-\usepackage{nicefrac}
-
-% bold math symbols
-\usepackage{bm} 
-
 % dummy text
 \usepackage{lipsum}
 
@@ -274,24 +262,23 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 
-% Custom table column types (http://tex.stackexchange.com/questions/12703/how-to-create-fixed-width-table-columns-with-text-raggedright-centered-raggedlef)
+% custom table column types (http://tex.stackexchange.com/questions/12703/how-to-create-fixed-width-table-columns-with-text-raggedright-centered-raggedlef)
 \usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
-% references for sketches survey questionnaire
+% special command for referencing RQs or table cells
 \newcommand{\refRQ}[1]{\hfill {\tiny $\rightarrow RQ#1$}}
 \newcommand{\refTab}[2]{{\scriptsize(#1,#2)}}
-
-% captions for sketches paper
-\newcommand{\myCaption}[1]{\vspace{0.6\baselineskip}\noindent\textbf{\sffamily#1}\vspace{0.4\baselineskip}}
 
 % rotate figures and tables
 \usepackage{rotating}
 
-% subfigure
+% sub-figures
 \usepackage{subcaption}
+
+\usepackage[export]{adjustbox} % draw boxes around figures
 
 % configure quote environment
 \usepackage{quoting}
@@ -421,11 +408,10 @@
 \chapter{Introduction}
 \label{ch:introduction}
 
-% you can use quotations at the start of each chapter using this environment:
-
-%\begin{chapter-quotation}{Ward Cunningham, The Pragmatic Programmer (2000)}
-%If you don't think carefully, you might think that programming is just typing statements in a programming language.
-%\end{chapter-quotation} 
+% you can use quotations at the start of each chapter using this environment
+\begin{chapter-quotation}{Ward Cunningham, The Pragmatic Programmer (2000)}
+If you don't think carefully, you might think that programming is just typing statements in a programming language.
+\end{chapter-quotation} 
 
 %exemplary paragraph with citations
 The software engineering research community is often criticized for not addressing the problems that practitioners actually face during their work~\cite{Briand2012}.
@@ -436,20 +422,32 @@ At the same time, software developers' beliefs are rather based on their persona
 \chapter{Background}
 \label{ch:background}
 
+\lipsum[1-12]
+
 \chapter{Related Work}
 \label{ch:related-work}
+
+\lipsum[1-4]
 
 \chapter{Methodology}
 \label{ch:methodology}
 
+\lipsum[1-4]
+
 \chapter{Results}
 \label{ch:results}
+
+\lipsum[1-4]
 
 \chapter{Discussion}
 \label{ch:discussion}
 
+\lipsum[1-4]
+
 \chapter{Conclusion and Future Work}
 \label{ch:conclusion}
+
+\lipsum[1-4]
 
 \listoffigures
  

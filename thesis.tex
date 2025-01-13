@@ -1,169 +1,541 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GENERAL SETTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Sets general options (like font size, paper size, and layout adjustments)
+% and configures how certain elements will be handled in the document (like the table of contents). 
+% IMPORTANT: Make sure to uncomment the 'final' option before submitting the final version of your thesis.
 \documentclass[
-	pdftex,
-	%draft,
-	%final,
-	12pt,
-	a4paper,
-	parskip=relative,
-	twoside,
-	footinclude=false,
-	footheight=0mm,
-	toc=bibliography,
-	toc=listof
-	%BCOR=8mm,
-	%DIV=12
-]{scrbook}
+  pdftex,            % Specifies that the document will be compiled with the pdfTeX engine, which outputs directly to PDF.
+  %draft,             % Uncomment this option to enable draft mode, which marks overfull lines with a black box.
+  %final,            % Uncomment this option to disable draft mode and remove the black boxes.
+  12pt,              % Sets the font size of the entire document to 12 points, which is a standard readable size.
+  a4paper,           % Sets the paper size to A4, commonly used in Europe (210mm × 297mm).
+  parskip=relative,  % Adds extra space between paragraphs. 'relative' means the space depends on the font size.
+  twoside,           % Prepares the document for two-sided printing, with margins set for both even and odd pages.
+  footinclude=false, % Excludes the footer area from being considered in the page layout. It won't affect the text body size.
+  footheight=0mm,    % Sets the height of the footer area to 0mm, effectively removing it from the page layout.
+  toc=bibliography,  % Automatically includes the bibliography in the Table of Contents (ToC).
+  toc=listof         % Automatically includes the lists of figures and tables in the Table of Contents (ToC).
+  %BCOR=8mm,         % Binding correction (Bindekorrektur) to adjust the position of the content on the page.
+  %DIV=12            % Sets the type area (text body) to be calculated with the '12pt' base font size.
+]{scrbook}           % Specifies the document class 'scrbook', which is part of the KOMA-Script package for book-style documents.
 
-% language and encoding
-\usepackage[utf8]{inputenc}
-\usepackage[english, ngerman]{babel} % adjust this based on thesis language 
-\usepackage[T1]{fontenc}
 
-% references
-\usepackage[square, comma, sort, numbers]{natbib} % sort&compress
 
-% citation (not compatible with natbib)
-%\usepackage{cite}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ENCODING AND LANGUAGE SETTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% page margins
-\usepackage[paper=a4paper, inner=30mm, outer=20mm, top=30mm, bottom=30mm]{geometry}
+% 'inputenc' package is used to manage the text encoding.
+% It ensures that the document supports UTF-8 encoding, allowing for special characters (e.g., ä, ö, ü) to be used directly.
+\usepackage[utf8]{inputenc}  
 
-% customize dictum format:
-%\setkomafont{dictumtext}{\itshape\normalsize}
-%\setkomafont{dictumauthor}{\normalfont\small}
-%\renewcommand*\dictumwidth{\linewidth}
-%\renewcommand*\dictumauthorformat[1]{--- #1}
-%\renewcommand*\dictumrule{}
+% 'babel' package is used to manage multiple languages.
+% Currently it is set up to load support for both English and German languages.
+% NOTE: 'ngerman' is the new German orthography.
+\usepackage[main=ngerman, english]{babel}
 
-% fonts
-%\usepackage{mathpazo} % Palatino font (serif)
-\usepackage{fourier} % Utopia font (serif)
-\usepackage[scaled=0.95]{helvet} % Helvetica font (sans-serif)
-\usepackage{courier} % Courier Font (typewriter)
-%\usepackage{eulervm} % Euler font (math) -> lead to problems with = and > characters in math mode
 
-% recalculate the page layout with a calculated DIV value
-% (see https://tex.stackexchange.com/a/183839)
-%\recalctypearea 
 
-% disable single lines at the start of a paragraph (Schusterjungen)
-\clubpenalty = 10000
-% disable single lines at the end of a paragraph (Hurenkinder)
-\widowpenalty = 10000 \displaywidowpenalty = 10000
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FONTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% configure graphics
-\usepackage[pdftex]{graphicx}
+% 'mathpazo' package is used to set the Palatino font for serif text.
+% \usepackage{mathpazo} 
 
-% outlined characters
+% 'fontenc' package is used to manage the font encoding.
+% It ensures proper handling of accented characters in the output, improving hyphenation and font encoding.
+\usepackage[T1]{fontenc}    
+
+% 'fourier' package is used to set the Utopia font for serif text.
+\usepackage{fourier} 
+
+% 'helvet' package is used to set the Helvetica font for sans-serif text.
+\usepackage[scaled=0.95]{helvet} 
+
+% 'courier' package is used to set the Courier font for typewriter (monospaced) text.
+\usepackage{courier} 
+
+% 'contour' package allows for outlining characters, which is useful for creating outlined or shadowed text effects.
 \usepackage{contour}
+
+% Sets the thickness of the contour around characters to 0.1pt.
 \contourlength{0.1pt}
 
-% math formulas
-\usepackage{amsmath}
-\usepackage{amssymb} 
-\usepackage{eucal} % more curly versions for \mathcal{...}
 
-% scientific notation
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'natbib' package is used to manage citations. 
+% This option formats citations in square brackets, separates multiple citations with commas, and sorts them numerically.
+\usepackage[square, comma, sort, numbers]{natbib}  
+
+% 'cite' package is used to improve the formatting of citations.
+% NOTE: This package is not compatible with the 'natbib' package.
+% \usepackage{cite}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGE LAYOUT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'geometry' sets the page layout and margins. It specifies:
+% - paper size as A4
+% - inner margin (binding side) as 30mm
+% - outer margin as 20mm
+% - top margin as 30mm
+% - bottom margin as 30mm
+\usepackage[paper=a4paper, inner=30mm, outer=20mm, top=30mm, bottom=30mm]{geometry}
+
+% 'recatypearea' is used to recalculate the page layout with the specified DIV value.
+% Source: https://tex.stackexchange.com/a/183839
+% \recalctypearea
+
+% Disables single lines at the start of a paragraph (Schusterjungen).
+% Setting \clubpenalty to a high value discourages LaTeX from leaving a single line at the beginning of a page.
+\clubpenalty = 10000
+
+% Disables single lines at the end of a paragraph (Hurenkinder).
+% Setting \widowpenalty and \displaywidowpenalty to high values discourages LaTeX from leaving a single line at the end of a page.
+\widowpenalty = 10000 
+\displaywidowpenalty = 10000
+
+% 'calc' package allows arithmetic operations on LaTeX lengths and dimensions.
+% It enables the use of commands like '\widthof{<string>}' to calculate the width of a string.
+% Facilitates calculations with lengths and dimensions
+\usepackage{calc}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GRAPHICS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'graphicx' package is used to manage the inclusion and manipulation of graphics (images) in the document.
+% The 'pdftex' option specifies the driver for PDF output.
+\usepackage[pdftex]{graphicx}
+
+% Enables text wrapping around figures.
+\usepackage{wrapfig} 
+
+% enables 'FloatBarrier' command to prevent figures from floating past a certain point.
+\usepackage{placeins}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CODE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% '\myCode{<text>}' formats the provided text as inline code.
+\newcommand{\myCode}[1]{\texttt{\small#1}}
+
+% 'algpseudocode' and 'algorithm' packages are used to create pseudocode and algorithm descriptions.
+% They provide environments and commands for writing structured pseudocode with proper formatting.
+\usepackage{algpseudocode} 
+
+% 'algorithm' package provides the 'algorithm' environment to float pseudocode within the document.
+% Enables floating algorithm environments for pseudocode.
+\usepackage{algorithm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MATH FORMULAS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'amsmath' package provides enhanced features for mathematical typesetting, including improved equation environments.
+\usepackage{amsmath}
+
+% 'amssymb' package provides additional mathematical symbols beyond the basic LaTeX set.
+\usepackage{amssymb} 
+
+% 'eucal' package provides more curly versions for \mathcal{...}, enhancing the appearance of mathematical calligraphy.
+\usepackage{eucal} 
+
+% 'nicefrac' package is used to create aesthetically pleasing fractions in text.
+% It provides the '\nicefrac{<num>}{<den>}' command to create slanted fractions.
+\usepackage{nicefrac} 
+
+% 'bm' package is used to make bold math symbols.
+% Allows for bolding of mathematical symbols, e.g., \bm{\alpha}
+\usepackage{bm}
+
+% 'eulervm' package is used to set the Euler font for math symbols.
+% \usepackage{eulervm}
+
+% 'siunitx' package provides tools for consistent typesetting of scientific units and numbers.
 \usepackage{siunitx}
+
+% Configures the siunitx package to use 'e' for exponent markers in scientific notation.
 \sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
 
-% unnumbered theorem-like environment for definitions
-\usepackage{amsthm}
-\newtheoremstyle{definitiontight}% name
-  {.5\baselineskip\@plus.2\baselineskip\@minus.2\baselineskip}% Space above
-  {.6\baselineskip\@plus.2\baselineskip\@minus.2\baselineskip}% Space below
-  {}% Body font
-  {}%Indent amount (empty = no indent, \parindent = para indent)
-  {\bfseries}%  Thm head font
-  {.}%       Punctuation after thm head
-  {.5em}%      Space after thm head: " " = normal interword space;
-        %       \newline = linebreak
-  {}%       Thm head spec
-\theoremstyle{definitiontight}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{hypothesis}{Hypothesis}[section]
-% https://tex.stackexchange.com/a/347781/100364
-\renewcommand{\thehypothesis}{\arabic{hypothesis}}% Remove section from theorem counter representation
+% 'amssymb' package is used to access a wider range of mathematical symbols.
+% \usepackage{amssymb}
 
-% colors for boxes, listings, und headers
+% 'amsmath' package is used to access a wider range of mathematical symbols.
+% \usepackage{amsmath}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREM ENVIRONMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'amsthm' package is used to create unnumbered theorem-like environments for definitions.
+\usepackage{amsthm} 
+
+% Defines a new theorem style named 'definitiontight'.
+% This style customizes the appearance and spacing of theorem environments.
+\newtheoremstyle{definitiontight}                              % Name of the style
+  {.5\baselineskip\@plus.2\baselineskip\@minus.2\baselineskip} % Space above the theorem
+  {.6\baselineskip\@plus.2\baselineskip\@minus.2\baselineskip} % Space below the theorem
+  {}                                                           % Body font (empty means default)
+  {}                                                           % Indent amount (empty means no indent)
+  {\bfseries}                                                  % Theorem head font (boldface)
+  {.}                                                          % Punctuation after theorem head (period)
+  {.5em}                                                       % Space after theorem head (0.5em space)
+  {}                                                           % Theorem head spec (empty for default)
+
+% Applies the newly defined 'definitiontight' style to subsequent theorem environments.
+\theoremstyle{definitiontight}
+
+% Creates a new theorem environment named 'definition'.
+% The numbering is tied to the section number.
+\newtheorem{definition}{Definition}[section]
+
+% Creates a new theorem environment named 'hypothesis'.
+% The numbering is tied to the section number.
+\newtheorem{hypothesis}{Hypothesis}[section]
+
+% Redefines the numbering of the 'hypothesis' environment to use only Arabic numerals.
+% This removes the section number from the hypothesis numbering.
+% Source: https://tex.stackexchange.com/a/347781/100364
+\renewcommand{\thehypothesis}{\arabic{hypothesis}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLOR AND COLOR SCHEMES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% 'xcolor' package is used to define custom colors for use in the document.
+\usepackage{xcolor} 
+
+% Defines custom colors for use in the document.
+% These colors can be used for text, backgrounds, boxes, and other elements.
+% Defines a very light gray color.
 \definecolor{light-gray}{gray}{0.97}
+
+% Defines a medium gray color using RGB values.
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
+
+% Defines a dark blue color using RGB values.
 \definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+
+% Defines a cyan color using RGB values.
 \definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+% Defines a background gray color.
 \definecolor{background-gray}{gray}{0.96}
 
-% configure first page of each chapter (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel)
-\makeatletter% siehe De-TeX-FAQ
+% Defines a very light gray color using RGB values.
+\definecolor{VeryLightGray}{rgb}{0.92,0.92,0.92}
+
+% Defines a dark green color using RGB values.
+\definecolor{darkgreen}{RGB}{0,150,0}
+
+% Defines a dark red color using RGB values.
+\definecolor{darkred}{RGB}{180,0,0}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHAPTERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Customizes the appearance of chapter titles using the KOMA-Script commands.
+% This redefines the chapter format to include a styled box and line.
+% Begins a section of code that changes internal LaTeX commands.
+\makeatletter
+
+% Redefines the chapter format.
 \renewcommand*{\chapterformat}{
-  \begingroup% damit \unitlength aenderung lokal bleibt
+  % Makes sure \unitlength stays local
+  \begingroup %
+    % Sets the unit length for the picture environment to 1mm.
     \setlength{\unitlength}{1mm}%
+    % Begins a picture environment with specified dimensions and offset.
     \begin{picture}(20,20)(0,3)
+      % Sets the space between the frame and the chapter title to 0pt.
       \setlength{\fboxsep}{0pt}
-       \put(0,0){\makebox(20,20){\rule{20\unitlength}{20\unitlength}}}%
-       %\put(0,21){\makebox(20,20){\rule{20\unitlength}{20\unitlength}}}
-      % Trennlinie
+      % Draws a white square of 20mm by 20mm at position (0,0).
+      \put(0,0){\makebox(20,20){\rule{20\unitlength}{20\unitlength}}}%
+      % Dividor line 
       \put(22,13){\linethickness{0.5pt}\line(1,0){\dimexpr
-          \textwidth-24\unitlength\relax\@gobble}}
-      % Kapitelnummer    
+        \textwidth-24\unitlength\relax\@gobble}}
+      % Chapter number    
       \put(-1.4,0.8){\makebox(18,18)[r]{%
           \color{white}\fontsize{22\unitlength}{28\unitlength}\selectfont\thechapter
-          %\kern-.05em% Ziffer in der Zeichenzelle nach rechts schieben
+          % Moves digit in the character cell to the right.
+          %\kern-.05em 
         }}
-      % Kapitel Schriftzug
+      % Chapter title
       \put(20,13){\makebox(\dimexpr
           \textwidth-18\unitlength\relax\@gobble,\ht\strutbox\@gobble)[l]{%
             \ \normalsize\color{black}\chapapp~\thechapter
           }}
-    \end{picture} % <-- Leerzeichen ist hier beabsichtigt!
+    % Space is needed here.
+    \end{picture} 
   \endgroup
 }
 
-% fancy headings (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel, and ChatGPT)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HEADERS AND FOOTERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'scrlayer-scrpage' package is used to customize headers and footers in KOMA-Script classes.
 \usepackage{scrlayer-scrpage}
-\usepackage[listings=false]{scrhack} % suppress warnings
+
+% Sets the page style to 'scrheadings', which allows for customized headers and footers.
 \pagestyle{scrheadings}
-\clearpairofpagestyles 
-\lehead{\colorbox{black}{\framebox[1cm][c]{\textcolor{white}{\textbf{\small\thepage}}}}\hspace{0.4cm}{\leftmark}}
-\rohead{\rightmark\hspace{0.4cm}\colorbox{black}{\framebox[1cm][c]{\textcolor{white}{\textbf{\small\thepage}}}}}
+
+% Clears the default header and footer styles, providing a clean slate for customization.
+\clearpairofpagestyles
+
+% Defines the left header on even-numbered pages.
+% It includes a black box with the page number in white, followed by the chapter title.
+\lehead{
+  \colorbox{black}{%
+    \framebox[1cm][c]{%
+      \textcolor{white}{\textbf{\small\thepage}}
+    }
+  }
+  \hspace{0.4cm}       % Adds horizontal space between the page number box and the chapter title.
+  {\leftmark}          % Inserts the current chapter title.
+}
+
+% Defines the right header on odd-numbered pages.
+% It includes the section title followed by a black box with the page number in white.
+\rohead{
+  {\rightmark}         % Inserts the current section title.
+  \hspace{0.4cm}       % Adds horizontal space between the section title and the page number box.
+  \colorbox{black}{
+    \framebox[1cm][c]{
+      \textcolor{white}{\textbf{\small\thepage}}
+    }
+  }
+}
+
+% Sets the font for the page headers and footers.
+% Uses the 'pag' font family with a footnote-sized font.
 \setkomafont{pageheadfoot}{\fontfamily{pag}\selectfont\footnotesize}
+
+% 'scrhack' package is used to fix incompatibilities between KOMA-Script and other packages.
+\usepackage{scrhack}
+% uncomment if you want to suppress warnings.
+%\usepackage[listings=false]{scrhack} 
+
+% Sets the height of the header to the height of a single line of text.
 \setlength{\footheight}{\baselineskip}
+
+% Configures additional KOMA-Script options for headers and footers.
+% - 'headsepline=0.5pt:\textwidth': Adds a horizontal line of 0.5pt thickness under the header, spanning the text width.
 \KOMAoptions{headsepline=0.5pt}
 
-% Quotation
-\newcommand{\quotemarks}[1]{{\bfseries{#1}}}
-\newenvironment{chapter-quotation}[1]
-{\begin{quotation}\pushQED{#1}\noindent\slshape\quotemarks{``}\hspace{-2pt}}
-{\hspace{-2pt}\quotemarks{''}\fontsize{10}{10}\normalfont\\{ }\\\hspace*{\fill}---\popQED\end{quotation}}
-%\newenvironment{chapter-quotation}[1]
-%{\pushQED{#1}\begin{quotation}``''}
-%{\begin{flushright}---\popQED\end{flushright}\end{quotation}}
 
-% tables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLES AND FIGURES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'multirow' package is used to create table cells that span multiple rows.
 \usepackage{multirow}
 
-% editorial commands
-\usepackage[export]{adjustbox} % draw boxes around figures
-%\usepackage{amssymb,amsmath}
+% gray background for table cells
+\newcommand{\graybg}{\cellcolor{VeryLightGray}}
+
+% 'caption' package is used to customize the appearance of captions for figures and tables.
+% Options include:
+% - font=small: Sets the caption text to a smaller font size.
+% - labelfont=bf: Makes the label (e.g., "Figure 1") bold.
+% - labelsep=endash: Uses an endash (–) to separate the label from the caption text.
+% - format=plain: Uses the plain format for captions without additional formatting.
+\usepackage[font=small, labelfont=bf, labelsep=endash, format=plain]{caption}
+
+% '\myCaption{<text>}' formats the provided text as a caption with specific styling and spacing.
+\newcommand{\myCaption}[1]{
+  \vspace{0.6\baselineskip} % Adds vertical space above the caption.
+  \noindent                 % Removes indentation at the beginning of the caption.
+  \textbf{\sffamily#1}      % Formats the caption text in bold sans-serif font.
+  \vspace{0.4\baselineskip} % Adds vertical space below the caption.
+}
+
+% 'subcaption' package is used to create subfigures and sub-tables within a main figure or table.
+% It allows for individual captions and labels for each subfigure or subtable.
+% Enables creation of subfigures and sub-tables with individual captions
+\usepackage{subcaption} 
+
+% 'tabularx' package is used to create tables with adjustable-width columns.
+% It allows for the creation of tables that can automatically adjust column widths to fit the page.
+\usepackage{tabularx} % Enables creation of tables with adjustable-width columns
+
+% 'booktabs' package enhances the quality of tables by providing professional-looking horizontal rules.
+% It offers commands like \toprule, \midrule, and \bottomrule for better table aesthetics.
+\usepackage{booktabs} % Provides professional-quality horizontal rules for tables
+
+% 'array' package is used to create custom column types for tables.
+% It allows for the definition of new column formats to enhance table flexibility and appearance.
+\usepackage{array} % Enables creation of custom table column types
+
+% 'arraystretch' command is used to adjust the spacing between rows in a table.
+% \renewcommand{\arraystretch}{1.5}
+
+% Defines a new column type 'L' for left-aligned cells with fixed width.
+% - \raggedright: Aligns text to the left without full justification.
+% - \let\newline\\: Allows the use of \\ for line breaks within cells.
+% - \arraybackslash: Restores the ability to use \\ at the end of cells.
+% - m{#1}: Creates a fixed-width column with vertical centering.
+% Source: http://tex.stackexchange.com/questions/12703/how-to-create-fixed-width-table-columns-with-text-raggedright-centered-raggedlef
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% Defines a new column type 'C' for center-aligned cells with fixed width.
+% Similar to 'L' but centers the text within the column.
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% Defines a new column type 'R' for right-aligned cells with fixed width.
+% Similar to 'L' but aligns the text to the right within the column.
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% 'rotating' package is used to rotate figures and tables within the document.
+% It provides environments like 'sidewaysfigure' and 'sidewaystable' for rotating content by 90 degrees.
+% Enables rotation of figures and tables.
+\usepackage{rotating}
+
+% '\refTab{<table1>}{<table2>}' creates a reference to tables, formatted as small-sized "(<table1>,<table2>)".
+\newcommand{\refTab}[2]{{\scriptsize(#1,#2)}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% QUOTATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Dictum settings
+\setkomafont{dictumtext}{\itshape\normalsize}
+\setkomafont{dictumauthor}{\normalfont\small}
+\renewcommand*\dictumwidth{\linewidth}
+\renewcommand*\dictumauthorformat[1]{--- #1}
+\renewcommand*\dictumrule{}
+
+% 'quotemarks' command formats quotation marks in boldface.
+% It defines a new command and environment for customized quotations within chapters.
+% It takes one argument, which is the quotation mark symbol.
+\newcommand{\quotemarks}[1]{{\bfseries{#1}}}
+
+% 'chapter-quotation' environment creates a customized quotation block.
+% It takes one argument, which can be used for additional formatting or notes.
+\newenvironment{chapter-quotation}[1]
+  {
+    \begin{quotation}                     % Begins the quotation environment.
+    \pushQED{#1}                          % Pushes the QED symbol (if any) for the end of the quotation.
+    \noindent                             % Removes indentation at the beginning of the quotation.
+    \slshape                              % Sets the font to slanted shape.
+    \quotemarks{``}                       % Inserts the opening quotation marks in boldface.
+    \hspace{-2pt}                         % Adjusts horizontal spacing for aesthetic alignment.
+  }
+  {
+    \hspace{-2pt}                         % Adjusts horizontal spacing before the closing quotation marks.
+    \quotemarks{''}                       % Inserts the closing quotation marks in boldface.
+    \fontsize{10}{10}\normalfont\\{ }\\   % Sets the font size and resets to normal font, adding line breaks.
+    \hspace*{\fill}---\popQED             % Adds a right-aligned em-dash and pops the QED symbol (if any).
+    \end{quotation}                       % Ends the quotation environment.
+  }
+
+% 'quoting' package is used to customize the quotation environments in the document.
+% It provides enhanced control over the appearance of quotations compared to the standard 'quote' environment.
+\usepackage{quoting} 
+
+% Sets the font size for quotations to small.
+\quotingsetup{font={small}}
+
+% Sets the left margin for quotations to 2em.
+\quotingsetup{leftmargin=2em}
+
+% Sets the right margin for quotations to 2em.
+\quotingsetup{rightmargin=2em}
+
+% Sets the vertical spacing before and after quotations to 1.5ex.
+\quotingsetup{vskip=1.5ex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EDITING AND COMMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'adjustbox' package is used to enhance the functionality of including graphics.
+% The 'export' option allows the use of keys from the 'adjustbox' package in other packages.
+% Enables advanced box adjustments around figures.
+\usepackage[export]{adjustbox} 
+
+% Defines a new command '\boxedtext' that creates a framed box around the provided text.
+% The text inside the box is set in a small, bold, sans-serif font.
 \newcommand{\boxedtext}[1]{\fbox{\scriptsize\bfseries\textsf{#1}}}
+
+% Defines a new command '\nota' that creates a custom notation box.
+% It takes two arguments: the label and the content.
+% The label is boxed using '\boxedtext', and the content is styled with symbols and italics.
 \newcommand{\nota}[2]{
 	\boxedtext{#1}
 		{\small$\blacktriangleright$\emph{\textsl{#2}}$\blacktriangleleft$}
 }
-\newcommand{\todo}[1]{{\color{red}\nota{TODO}{#1}}} % Wichtig: Vor oder nach \todo{} Leerzeichen entfernen
-%\renewcommand\todo[1]{} % todos ein-/ausschalten
 
-% line breaks in URLs
-\usepackage[hyphens]{url}
-\usepackage{hyperref}
 
-% allow to configure enumerate/itemize environment
-\usepackage{enumitem}
 
-% use \widthof{<string>} to use as length 
-\usepackage{calc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% URL LINE BREAKS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% boxes for results
-\usepackage[framemethod=tikz]{mdframed}
+% 'url' package is used to handle URLs in the document.
+% The 'hyphens' option allows URLs to be broken at hyphens, improving line breaking in long URLs.
+% Enables line breaks at hyphens in URLs.
+\usepackage[hyphens]{url} 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HYPERLINKS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'hyperref' package is used to create hyperlinks within the document.
+% It automatically turns references, citations, and URLs into clickable links.
+% Adds clickable hyperlinks to the document
+\usepackage[hidelinks]{hyperref}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BOXES FOR RESULTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'mdframed' package is used to create framed and colored boxes around content.
+% The 'framemethod=tikz' option specifies that TikZ is used for drawing the frames.
+% Enables creation of custom framed boxes using TikZ
+\usepackage{mdframed}
+
+% Defines a new environment 'dashedbox' with specific styling.
+% - Inner left and right margins are set to 7pt.
+% - Vertical spacing above and below the box is set to one baseline skip.
+% - The frame is drawn with black dashed lines of 0.5pt thickness.
+% - The background color is set to white.
 \newmdenv[
   innerleftmargin=7pt,
   innerrightmargin=7pt,
@@ -173,6 +545,12 @@
   linecolor=white,
   backgroundcolor=white
 ]{dashedbox}
+
+% Defines a new environment 'normalbox' with specific styling.
+% - Inner left and right margins are set to 7pt.
+% - Vertical spacing above and below the box is set to one baseline skip.
+% - The frame is drawn with solid black lines of 0.5pt thickness.
+% - The background color is set to white.
 \newmdenv[
   innerleftmargin=7pt,
   innerrightmargin=7pt,
@@ -182,6 +560,14 @@
   linecolor=black,
   backgroundcolor=white
 ]{normalbox}
+
+% Defines a new environment 'verticalline' with specific styling.
+% - No top, bottom, or right lines are drawn.
+% - Vertical spacing above and below the box is set to '\topsep'.
+% - Inner top and bottom margins are set to 0pt.
+% - Inner left margin is set to 7pt and inner right margin to 0pt.
+% - The frame is drawn with a solid black line of 3pt thickness on the left side.
+% - The background color is set to white.
 \newmdenv[
   topline=false,
   bottomline=false,
@@ -196,6 +582,14 @@
   linecolor=black,
   backgroundcolor=white
 ]{verticalline}
+
+% Defines a new environment 'verticalline-background' with specific styling.
+% - No top, bottom, or right lines are drawn.
+% - Vertical spacing above and below the box is set to one baseline skip.
+% - Inner top and bottom margins are set to 6pt.
+% - Inner left and right margins are set to 12pt.
+% - The frame is drawn with a solid black line of 4pt thickness on the left side.
+% - The background color is set to 'background-gray' (previously defined).
 \newmdenv[
   topline=false,
   bottomline=false,
@@ -211,105 +605,124 @@
   backgroundcolor=background-gray
 ]{verticalline-background}
 
-% source code listings
-\usepackage{listings}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LISTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'enumitem' package allows customization of list environments like 'enumerate' and 'itemize'.
+% It provides control over labels, spacing, and layout of list items.
+% Enables customization of enumerate and itemize environments.
+\usepackage{enumitem} 
+
+% 'listings' package is used to include and format source code within the document.
+% Enables the inclusion and customization of source code listings.
+\usepackage{listings} 
+
+% Sets the default styling for all listings environments.
 \lstset{
-  basicstyle=\ttfamily\small,
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  tabsize=2,
-  breaklines=true,
-  breakatwhitespace=true,
-  aboveskip=0.5\baselineskip,
-  belowskip=0.5\baselineskip,
-  xleftmargin=0.5\parindent,
-  xrightmargin=0pt,
-  keywordstyle=\color{blue},
-  identifierstyle=\color{black},
-  commentstyle=\color{gray},
-  stringstyle=\color{gray},
-  emphstyle=\color{red},
+  basicstyle=\ttfamily\small,            % Sets the basic font style to typewriter and size to small.
+  showspaces=false,                      % Hides spaces in the source code.
+  showstringspaces=false,                % Hides spaces within strings.
+  showtabs=false,                        % Hides tab characters.
+  tabsize=2,                             % Sets the number of spaces per tab.
+  breaklines=true,                       % Enables line breaking for long lines.
+  breakatwhitespace=true,                % Allows line breaks at whitespace characters.
+  aboveskip=0.5\baselineskip,            % Adds vertical space above listings.
+  belowskip=0.5\baselineskip,            % Adds vertical space below listings.
+  xleftmargin=0.5\parindent,             % Sets left margin relative to paragraph indent.
+  xrightmargin=0pt,                      % Sets right margin to 0pt.
+  keywordstyle=\color{blue},             % Styles keywords in blue.
+  identifierstyle=\color{black},         % Styles identifiers in black.
+  commentstyle=\color{gray},             % Styles comments in gray.
+  stringstyle=\color{gray},              % Styles strings in gray.
+  emphstyle=\color{red},                 % Styles emphasized text in red.
 }
 
-\lstnewenvironment{java} {\lstset{
-  language=Java
-}}{}
+% Defines a new environment 'java' for Java code listings.
+\lstnewenvironment{java} {
+  \lstset{
+    language=Java                        % Sets the language to Java for syntax highlighting.
+  }
+}{}
 
-\lstnewenvironment{java-comment} {\lstset{
-  language=Java,
-  commentstyle=\color{black}
-}}{}
+% Defines a new environment 'java-comment' for Java code listings with comments styled differently.
+\lstnewenvironment{java-comment} {
+  \lstset{
+    language=Java,                       % Sets the language to Java.
+    commentstyle=\color{black}           % Styles comments in black instead of gray.
+  }
+}{}
 
-\lstnewenvironment{xml} {\lstset{
-  language=XML
-}}{}
+% Defines a new environment 'xml' for XML code listings.
+\lstnewenvironment{xml} {
+  \lstset{
+    language=XML                         % Sets the language to XML for syntax highlighting.
+  }
+}{}
 
-\lstnewenvironment{code} {\lstset{
-}}{}
+% Defines a new environment 'code' for generic code listings without specific language settings.
+\lstnewenvironment{code} {
+  \lstset{
+    % No specific language or styling applied.
+  }
+}{}
 
-\lstnewenvironment{regex} {\lstset{
-  alsoletter=\\()\{\}.,
-  morekeywords={String, long, if, return, format, B, int, Math, log}
-}}{}
+% Defines a new environment 'regex' for regular expression code listings with customized keywords.
+\lstnewenvironment{regex} {
+  \lstset{
+    alsoletter=\\()\{\}.,                                              % Treats these characters as letters for better parsing.
+    morekeywords={String, long, if, return, format, B, int, Math, log} % Adds custom keywords for highlighting.
+  }
+}{}
 
-% gray background for table cells
-\definecolor{VeryLightGray}{rgb}{0.92,0.92,0.92}
-\newcommand{\graybg}{\cellcolor{VeryLightGray}}
 
-% nicer fractions
-\usepackage{nicefrac}
 
-% bold math symbols
-\usepackage{bm} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LOREM IPSUM
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% dummy text
+% 'lipsum' package is used to generate placeholder text for demonstration purposes.
 \usepackage{lipsum}
 
-% configure captions
-\usepackage[font=small, labelfont=bf, labelsep=endash, format=plain]{caption}
 
-% tables
-\usepackage{tabularx}
-\usepackage{booktabs}
 
-% Custom table column types (http://tex.stackexchange.com/questions/12703/how-to-create-fixed-width-table-columns-with-text-raggedright-centered-raggedlef)
-\usepackage{array}
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% references for sketches survey questionnaire
+% IMPORTANT: Remove spacing before and after the \todo{} box.
+\newcommand{\todo}[1]{{\color{red}\nota{TODO}{#1}}} 
+
+% Uncomment the following line to hide all \todo{} boxes.
+% \renewcommand\todo[1]{}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'appendix' package is used to manage appendices in the document.
+% The 'titletoc' option ensures that appendices are included in the Table of Contents.
+% '\usepackage[titletoc]{appendix}' allows for customized appendix sections.
+% Manages appendices and includes them in the Table of Contents.
+\usepackage[titletoc]{appendix} 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RESEARCH QUESTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% '\refRQ{<number>}' creates a reference to a research question, formatted as a tiny right arrow followed by "RQ<number>".
 \newcommand{\refRQ}[1]{\hfill {\tiny $\rightarrow RQ#1$}}
-\newcommand{\refTab}[2]{{\scriptsize(#1,#2)}}
 
-% captions for sketches paper
-\newcommand{\myCaption}[1]{\vspace{0.6\baselineskip}\noindent\textbf{\sffamily#1}\vspace{0.4\baselineskip}}
 
-% rotate figures and tables
-\usepackage{rotating}
 
-% subfigure
-\usepackage{subcaption}
-
-% configure quote environment
-\usepackage{quoting}
-\quotingsetup{font={small}}
-\quotingsetup{leftmargin=2em}
-\quotingsetup{rightmargin=2em}
-\quotingsetup{vskip=1.5ex}
-
-% formatting for code 
-\newcommand{\myCode}[1]{\texttt{\small#1}}
-
-% pseudocode
-\usepackage{algpseudocode}
-\usepackage{algorithm}
-
-% appendix
-\usepackage[titletoc]{appendix}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% VARIABLES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\thesistype}{Bachelor's Thesis} % Master's Thesis
@@ -319,15 +732,25 @@
 \newcommand{\studentnumber}{12345678}
 \newcommand{\examiner}{Prof. Dr. Sebastian Baltes}
 \newcommand{\secondexaminer}{Title Firstname Lastname}
-\newcommand{\supervisor}{Prof. Dr. Sebastian Baltes} % usually a doctoral or postdoctoral researcher
+\newcommand{\supervisor}{Prof. Dr. Sebastian Baltes} % usually a doctoral or postdoctoral researcher.
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLE PAGE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\hyphenchar\font=\string"7F % fix hyphenation of hyphenated words, see https://tex.stackexchange.com/a/63234/100364
-\selectlanguage{english}
 
-\frontmatter % roman numbers
+% Fixes hyphenation of hyphenated words.
+% Source: https://tex.stackexchange.com/a/63234/100364
+\hyphenchar\font=\string"7F 
+
+% Sets the language to English for the document.
+\selectlanguage{english} 
+
+% Sets up the front matter with Roman page numbers.
+\frontmatter
 
 \begin{titlepage}
 
@@ -355,13 +778,18 @@
 
 \end{titlepage}
 
-% empty page for double-sided printing
+% Empty page for double-sided printing.
 \newpage
 \thispagestyle{empty}
 \mbox{}
 \newpage
 
-{
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUMMARY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \thispagestyle{empty}
 	
 \begin{center}
@@ -407,16 +835,35 @@
 
 \newpage
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ACKNOWLEDGMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter*{Acknowledgments}
 
 \lipsum[1-4]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLE OF CONTENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \tableofcontents
 
 %\cleardoublepage
 \clearpage
 
-\mainmatter % arabic numbers
+% arabic numbers
+\mainmatter
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHAPTERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Introduction}
 \label{ch:introduction}
@@ -425,9 +872,9 @@
 
 %\begin{chapter-quotation}{Ward Cunningham, The Pragmatic Programmer (2000)}
 %If you don't think carefully, you might think that programming is just typing statements in a programming language.
-%\end{chapter-quotation} 
+%\end{chapter-quotation}
 
-%exemplary paragraph with citations
+% exemplary paragraph with citations.
 The software engineering research community is often criticized for not addressing the problems that practitioners actually face during their work~\cite{Briand2012}.
 At the same time, software developers' beliefs are rather based on their personal experience than on empirical findings~\cite{DevanbuZimmermannOthers2016}.
 
@@ -451,12 +898,30 @@ At the same time, software developers' beliefs are rather based on their persona
 \chapter{Conclusion and Future Work}
 \label{ch:conclusion}
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LIST OF FIGURES AND TABLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \listoffigures
- 
+
 \listoftables
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bibliographystyle{plainnat}
 \bibliography{literature}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDICES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{appendices}
 

@@ -146,9 +146,20 @@
 % uncomment the following line to hide all \todo{} commands
 %\renewcommand\todo[1]{}
 
-% line breaks in URLs
-\usepackage[hyphens]{url}
+% customize links and references
+\usepackage[hyphens]{url} % line breaks in URLs
 \usepackage{hyperref}
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
+% babel overrides the labels...
+\addto\extrasenglish{%
+  \renewcommand{\chapterautorefname}{Chapter}
+  \renewcommand{\sectionautorefname}{Section}
+  \renewcommand{\subsectionautorefname}{Section}
+  \renewcommand{\subsubsectionautorefname}{Section}
+}
 
 % allow to configure enumerate/itemize environment
 \usepackage{enumitem}
@@ -416,6 +427,7 @@ If you don't think carefully, you might think that programming is just typing st
 %exemplary paragraph with citations
 The software engineering research community is often criticized for not addressing the problems that practitioners actually face during their work~\cite{Briand2012}.
 At the same time, software developers' beliefs are rather based on their personal experience than on empirical findings~\cite{DevanbuZimmermannOthers2016}.
+We summarize this discussion in \autoref{ch:background}.
 
 \todo{Formulate problem statement and research question(s)}
 

@@ -1,0 +1,331 @@
+\documentclass[
+    pdftex,
+    %draft, % Prints a box at the end of overfull lines, changes behavior of some packages
+    final,
+    11pt,
+    a4paper,
+    parskip=false, % Paragraphs are identified by indentation of the first line by 1em
+    twoside, % Prepares the document for two-sided printing
+    footheight=0mm, % remove footer
+    footinclude=false,
+    toc=bibliography, % add bibliography to table of contents
+    toc=listof % add list of figures and tables to table of contents
+]{scrbook} % documentation: https://de.mirrors.cicku.me/ctan/macros/latex/contrib/koma-script/doc/scrguide-en.pdf
+
+% language and encoding
+\usepackage[utf8]{inputenc} % set document encoding to UTF-8
+\usepackage[main=english, ngerman]{babel} % adjust language depending on thesis language (affects hyphenation)
+\usepackage[T1]{fontenc} % set font encoding so that special characters are displayed correctly
+
+% configure graphics
+\usepackage[pdftex]{graphicx}
+
+% fonts
+%\usepackage{mathpazo} % Palatino font (serif)
+%\usepackage{fourier} % Utopia font (serif)
+\usepackage{lmodern} % % Latin Modern Roman (including its typewriter font)
+\usepackage[scaled=0.9]{helvet} % URW Nimbus Sans (Helvetica clone)
+\usepackage{courier} % Courier Font (typewriter)
+
+% math formulas
+\usepackage{amsmath}
+\usepackage{amssymb} 
+\usepackage{eucal} % more curly versions for \mathcal{...}
+\usepackage{nicefrac} % % nicer fractions
+\usepackage{bm} % bold math symbols
+
+% outlined characters
+\usepackage{contour}
+\contourlength{0.1pt}
+
+% scientific notation
+\usepackage{siunitx}
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
+
+% page margins
+\usepackage[paper=a4paper, inner=30mm, outer=25mm, top=30mm, bottom=25mm, head=21pt]{geometry}
+
+% references
+\usepackage[square, comma, sort, numbers]{natbib} % sort&compress
+
+% citation commands (not compatible with natbib)
+%\usepackage{cite}
+
+% prevent single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 10000
+% prevent single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 10000 \displaywidowpenalty = 10000
+
+% enables text wrapping around figures.
+\usepackage{wrapfig} 
+
+% allows you to insert \FloatBarrier commands at places that floats should not move past, perhaps at every \section
+\usepackage{placeins}
+
+% unnumbered theorem-like environment for definitions
+\usepackage{amsthm}
+\newtheoremstyle{definitiontight}% name
+  {.5\baselineskip\@plus.2\baselineskip\@minus.2\baselineskip}% Space above
+  {.6\baselineskip\@plus.2\baselineskip\@minus.2\baselineskip}% Space below
+  {}% Body font
+  {}%Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}%  Thm head font
+  {.}%       Punctuation after thm head
+  {.5em}%      Space after thm head: " " = normal interword space;
+        %       \newline = linebreak
+  {}%       Thm head spec
+\theoremstyle{definitiontight}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{hypothesis}{Hypothesis}[section]
+% https://tex.stackexchange.com/a/347781/100364
+\renewcommand{\thehypothesis}{\arabic{hypothesis}}% Remove section from theorem counter representation
+
+% colors for boxes, listings, und headers
+\definecolor{light-gray}{gray}{0.97}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{background-gray}{gray}{0.96}
+
+% configure first page of each chapter (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel)
+\makeatletter% siehe De-TeX-FAQ
+\renewcommand*{\chapterformat}{
+  \begingroup% damit \unitlength aenderung lokal bleibt
+    \setlength{\unitlength}{1mm}%
+    \begin{picture}(20,20)(0,3)
+      \setlength{\fboxsep}{0pt}
+       \put(0,0){\makebox(20,20){\rule{20\unitlength}{20\unitlength}}}%
+       %\put(0,21){\makebox(20,20){\rule{20\unitlength}{20\unitlength}}}
+      % Trennlinie
+      \put(22,13){\linethickness{0.5pt}\line(1,0){\dimexpr
+          \textwidth-24\unitlength\relax\@gobble}}
+      % Kapitelnummer    
+      \put(-1.4,0.8){\makebox(18,18)[r]{%
+          \color{white}\fontsize{22\unitlength}{28\unitlength}\selectfont\thechapter
+          %\kern-.05em% Ziffer in der Zeichenzelle nach rechts schieben
+        }}
+      % Kapitel Schriftzug
+      \put(20,13){\makebox(\dimexpr
+          \textwidth-18\unitlength\relax\@gobble,\ht\strutbox\@gobble)[l]{%
+            \ \normalsize\color{black}\chapapp~\thechapter
+          }}
+    \end{picture} % <-- Leerzeichen ist hier beabsichtigt!
+  \endgroup
+}
+
+% fancy headings (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel, and ChatGPT)
+\usepackage{scrlayer-scrpage}
+\usepackage[listings=false]{scrhack} % suppress warnings
+\pagestyle{scrheadings}
+\clearpairofpagestyles 
+\lehead{\colorbox{black}{\framebox[1cm][c]{\textcolor{white}{\textbf{\small\thepage}}}}\hspace{0.4cm}{\leftmark}}
+\rohead{\rightmark\hspace{0.4cm}\colorbox{black}{\framebox[1cm][c]{\textcolor{white}{\textbf{\small\thepage}}}}}
+\setkomafont{pageheadfoot}{\fontfamily{pag}\selectfont\footnotesize}
+\setlength{\footheight}{\baselineskip}
+\KOMAoptions{headsepline=0.5pt}
+
+% configure environment for quotations to be used at the beginning of a chapter (dictum)
+\newcommand{\quotemarks}[1]{{\bfseries{#1}}}
+\newenvironment{chapter-quotation}[1]
+{\begin{quotation}\pushQED{#1}\noindent\slshape\quotemarks{``}\hspace{-2pt}}
+{\hspace{-2pt}\quotemarks{''}\fontsize{10}{10}\normalfont\\{ }\\\hspace*{\fill}---\popQED\end{quotation}}
+%\newenvironment{chapter-quotation}[1]
+%{\pushQED{#1}\begin{quotation}``''}
+%{\begin{flushright}---\popQED\end{flushright}\end{quotation}}
+
+% tables
+\usepackage{multirow}
+
+% editorial commands
+\newcommand{\boxedtext}[1]{\fbox{\scriptsize\bfseries\textsf{#1}}}
+\newcommand{\nota}[2]{
+	\boxedtext{#1}
+		{\small$\blacktriangleright$\emph{\textsl{#2}}$\blacktriangleleft$}
+}
+\newcommand{\todo}[1]{{\color{red}\nota{TODO}{#1}}} % important: Remove spacing before and after \todo{}
+% uncomment the following line to hide all \todo{} commands
+%\renewcommand\todo[1]{}
+\newcommand{\comment}[2]{{\color{blue}\nota{#1}{#2}}} % important: Remove spacing before and after \todo{}
+% uncomment the following line to hide all \todo{} commands
+%\renewcommand\comment[1]{}
+
+% customize links and references
+\usepackage[hyphens]{url} % line breaks in URLs
+\usepackage{hyperref}
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
+% babel overrides the labels...
+\addto\extrasenglish{%
+  \renewcommand{\chapterautorefname}{Chapter}
+  \renewcommand{\sectionautorefname}{Section}
+  \renewcommand{\subsectionautorefname}{Section}
+  \renewcommand{\subsubsectionautorefname}{Section}
+}
+
+% allow to configure enumerate/itemize environment
+\usepackage{enumitem}
+
+% use \widthof{<string>} to use as length 
+\usepackage{calc}
+
+% boxes for results
+\usepackage[framemethod=tikz]{mdframed}
+\newmdenv[
+  innerleftmargin=7pt,
+  innerrightmargin=7pt,
+  skipabove=\baselineskip,
+  skipbelow=\baselineskip,
+  tikzsetting={draw=black,dashed,line width=0.5pt,dash pattern = on 4pt off 2pt},
+  linecolor=white,
+  backgroundcolor=white
+]{dashedbox}
+\newmdenv[
+  innerleftmargin=7pt,
+  innerrightmargin=7pt,
+  skipabove=\baselineskip,
+  skipbelow=\baselineskip,
+  tikzsetting={draw=black, line width=0.5pt},
+  linecolor=black,
+  backgroundcolor=white
+]{normalbox}
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  skipabove=\topsep,
+  skipbelow=\topsep,
+  innertopmargin=0pt,
+  innerbottommargin=0pt,
+  innerleftmargin=7pt,
+  innerrightmargin=0pt,
+  tikzsetting={draw=black, line width=3pt},
+  linecolor=black,
+  backgroundcolor=white
+]{verticalline}
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  skipabove=\baselineskip,
+  skipbelow=\baselineskip,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  innerleftmargin=12pt,
+  innerrightmargin=12pt,
+  tikzsetting={draw=black, line width=4pt},
+  linecolor=black,
+  backgroundcolor=background-gray
+]{verticalline-background}
+
+% source code listings
+\usepackage{listings}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  breaklines=true,
+  breakatwhitespace=true,
+  aboveskip=0.5\baselineskip,
+  belowskip=0.5\baselineskip,
+  xleftmargin=0.5\parindent,
+  xrightmargin=0pt,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{black},
+  commentstyle=\color{gray},
+  stringstyle=\color{gray},
+  emphstyle=\color{red},
+}
+
+\lstnewenvironment{plain} {\lstset{
+}}{}
+
+\lstnewenvironment{java} {\lstset{
+  language=Java
+}}{}
+
+\lstnewenvironment{java-comment} {\lstset{
+  language=Java,
+  commentstyle=\color{black}
+}}{}
+
+\lstnewenvironment{xml} {\lstset{
+  language=XML
+}}{}
+
+\lstnewenvironment{code} {\lstset{
+}}{}
+
+\lstnewenvironment{regex} {\lstset{
+  alsoletter=\\()\{\}.,
+  morekeywords={String, long, if, return, format, B, int, Math, log}
+}}{}
+
+% gray background for table cells
+\definecolor{VeryLightGray}{rgb}{0.92,0.92,0.92}
+\newcommand{\graybg}{\cellcolor{VeryLightGray}}
+
+% dummy text
+\usepackage{lipsum}
+
+% configure captions
+\usepackage[font=small, labelfont=bf, labelsep=endash, format=plain]{caption}
+
+% tables
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+% custom table column types (http://tex.stackexchange.com/questions/12703/how-to-create-fixed-width-table-columns-with-text-raggedright-centered-raggedlef)
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% special command for referencing RQs or table cells
+\newcommand{\refRQ}[1]{\hfill {\tiny $\rightarrow RQ#1$}}
+\newcommand{\refTab}[2]{{\scriptsize(#1,#2)}}
+
+% rotate figures and tables
+\usepackage{rotating}
+
+% sub-figures
+\usepackage{subcaption}
+
+\usepackage[export]{adjustbox} % draw boxes around figures
+
+% configure quote environment
+\usepackage{quoting}
+\quotingsetup{font={small}}
+\quotingsetup{leftmargin=2em}
+\quotingsetup{rightmargin=2em}
+\quotingsetup{vskip=1.5ex}
+
+% formatting for code 
+\newcommand{\myCode}[1]{\texttt{\small#1}}
+
+% pseudocode
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+% indention of RQs
+\newlength{\rqindent}\setlength{\rqindent}{\parindent+\widthof{RQ1\ }}
+
+% appendix
+\usepackage[titletoc]{appendix}
+
+% colored boxes
+\usepackage{tcolorbox}
+
+\newtcolorbox{graybox}[1]{
+    colback=black!3!white,
+    colframe=black!15!white,
+    coltitle=black!80!white,
+    fonttitle=\sffamily\bfseries,
+    toptitle=3pt,
+    bottomtitle=3pt,
+    title={#1}
+}

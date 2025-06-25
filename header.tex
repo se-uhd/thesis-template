@@ -319,7 +319,6 @@
 
 % colored boxes
 \usepackage{tcolorbox}
-
 \newtcolorbox{graybox}[1]{
     colback=black!3!white,
     colframe=black!15!white,
@@ -329,3 +328,7 @@
     bottomtitle=3pt,
     title={#1}
 }
+
+% custom quotes
+\usepackage{csquotes}
+\newcommand*{\enq}[1]{\enquote{{\itshape#1}}}

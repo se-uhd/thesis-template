@@ -1,3 +1,17 @@
+\documentclass[
+    pdftex,
+    %draft, % Prints a box at the end of overfull lines, changes behavior of some packages
+    final,
+    11pt,
+    a4paper,
+    parskip=false, % Paragraphs are identified by indentation of the first line by 1em
+    twoside, % Prepares the document for two-sided printing
+    footheight=0mm, % remove footer
+    footinclude=false,
+    toc=bibliography, % add bibliography to table of contents
+    toc=listof % add list of figures and tables to table of contents
+]{scrbook} % documentation: https://de.mirrors.cicku.me/ctan/macros/latex/contrib/koma-script/doc/scrguide-en.pdf
+
 \input{header}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -221,7 +235,7 @@ Hiermit versichere ich, dass ich die vorliegende Arbeit eigenständig verfasst u
 \lipsum[1-4]
 
 \end{appendices}
- 
+
 \backmatter
 
 \end{document}

@@ -19,12 +19,12 @@
 \newcommand{\thesistype}{Bachelor's Thesis} % Master's Thesis
 \newcommand{\thesistitle}{Thesis Title}
 \newcommand{\studentname}{Firstname Lastname}
-\newcommand{\monthyear}{October 2024}
+\newcommand{\monthyear}{October 2025}
 \newcommand{\studentid}{12345678}
 \newcommand{\examiner}{Title Firstname Lastname}
 \newcommand{\secondexaminer}{Prof. Dr. Sebastian Baltes}
 \newcommand{\supervisor}{Title Firstname Lastname} % usually a doctoral or postdoctoral researcher
-\newcommand{\ubt}{University of Bayreuth, Germany}
+\newcommand{\ubt}{Heidelberg University, Germany}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -37,12 +37,12 @@
 \begin{titlepage}
 
 	\begin{center}
-		\includegraphics[height=1.5cm]{figures/logos/logo-ubt.png}	
+		\includegraphics[height=2.5cm]{figures/logos/hd_logo_standard_16cm_rgb.png}	
 		\hfill
-		\includegraphics[height=1.35cm]{figures/logos/logo-se-ubt.png}	
+		\includegraphics[height=1.4cm]{figures/logos/se-uhd-logo.png}	
 	\end{center}
 	
-	\vspace{4cm}
+	\vspace{5cm}
 	
 	\begin{center}
 		{\large \thesistype}\\
@@ -69,11 +69,12 @@
 \thispagestyle{empty}
 	
 \begin{center}
-	{\large University of Bayreuth}\\
+	{\large\bfseries Heidelberg University}\\
 	\vspace{5pt}
-	Prof. Dr. Sebastian Baltes\\
 	Software Engineering Group\\
-	95440 Bayreuth, Germany\\
+	Institute of Computer Science\\
+    Im Neuenheimer Feld 205\\
+    69120 Heidelberg, Germany
 \end{center}
 	
 \vspace{1pt}
@@ -212,12 +213,37 @@ We provide all source code, data, and study materials as part of an online appen
 
 \begin{appendices}
 
+\begin{otherlanguage}{ngerman}
 \chapter{Eigenständigkeitserklärung}
 	
 \vspace{1cm}
-\noindent	
+\noindent
 % https://www.hochschule-bayern.de/fileadmin/daten/Positionspapiere/KI-Leitlinie_Hochschule-Bayern-19052025.pdf
-Hiermit versichere ich, dass ich die vorliegende Arbeit eigenständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel verwendet habe. Alle übernommenen Inhalte sowie mit Unterstützung von KI-generierten Inhalte wurden entsprechend den anerkannten wissenschaftlichen Grundsätzen oder entsprechend der Regelungen zur Kennzeichnung von KI-Inhalten kenntlich gemacht. Ausgenommen von der Kenntlichmachung sind orthografische oder grammatikalische Korrekturen, Übersetzungen sowie nicht-sinnverändernde Verbesserungen von Formulierungen. Ich bin mir bewusst, dass mit KI generierte Texte keine Garantie für die Qualität von Inhalten und Text bieten. Daher erkläre ich, dass ich KI-Werkzeuge lediglich als Hilfsmittel genutzt habe, die von KI generierten Inhalte kritisch überprüft habe und mein eigenständiger kognitiver sowie kreativer Einfluss in dieser Arbeit überwiegt. Ich versichere, dass ich die Inhalte meiner Arbeit vollständig verstanden habe und selbstständig vertreten kann. Ich versichere, dass ich ausschließlich KI-Werkzeuge verwendet habe, deren Nutzung vom Prüfer oder der Prüferin als Hilfsmittel zugelassen wurden. Die Arbeit wurde bisher nicht zur Erlangung eines akademischen Grades eingereicht. 
+Hiermit versichere ich, dass ich die vorliegende Arbeit eigenständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel verwendet habe.
+Alle übernommenen Inhalte sowie mit Unterstützung von KI-generierten Inhalte wurden entsprechend den anerkannten wissenschaftlichen Grundsätzen oder entsprechend der Regelungen zur Kennzeichnung von KI-Inhalten kenntlich gemacht.
+Ausgenommen von der Kenntlichmachung sind orthografische oder grammatikalische Korrekturen, Übersetzungen sowie nicht-sinnverändernde Verbesserungen von Formulierungen.
+Ich bin mir bewusst, dass mit KI generierte Texte keine Garantie für die Qualität von Inhalten und Text bieten.
+Daher erkläre ich, dass ich die unten genannten KI-Werkzeuge lediglich als Hilfsmittel genutzt habe, die von KI generierten Inhalte kritisch überprüft habe und mein eigenständiger kognitiver sowie kreativer Einfluss in dieser Arbeit überwiegt.
+Ich versichere, dass ich die Inhalte meiner Arbeit vollständig verstanden habe und selbstständig vertreten kann.
+Ich versichere, dass ich ausschließlich KI-Werkzeuge verwendet habe, deren Nutzung vom Prüfer oder der Prüferin als Hilfsmittel zugelassen wurden.
+Die Arbeit wurde bisher nicht zur Erlangung eines akademischen Grades eingereicht. 
+
+% https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-formular-de/download
+% https://backend.heiskills.uni-heidelberg.de/de/dokumente/ai-sample-form-en/download
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\linewidth}{|l|X|X|}
+\hline
+\textbf{KI-Werkzeug} & \textbf{Verwendungszweck} & \textbf{Kommentare (optional)} \\
+\hline
+ChatGPT & Erstellung eines Gliederungsentwurfs & n/a \\
+\hline
+DeepL & Übersetzung von deutschen Texten ins Englische & Es erfolgte eine Kontrolle durch einen Muttersprachler. \\ \hline
+Claude Code & Unterstützung bei der Entwicklung des Prototyps & Jeglicher generierter Code wurde von mir begutachtet und ggf. überarbeitet. \\
+\hline
+\end{tabularx}
+\caption{Verwendung von KI-Werkzeugen (siehe \href{https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-formular-de/download}{Musterformular}).}
+\end{table}
 
 \vspace{1.5cm}
 	
@@ -233,6 +259,8 @@ Hiermit versichere ich, dass ich die vorliegende Arbeit eigenständig verfasst u
 \selectlanguage{german}
 
 \lipsum[1-4]
+
+\end{otherlanguage}
 
 \end{appendices}
 

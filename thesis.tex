@@ -19,12 +19,11 @@
 \newcommand{\thesistype}{Bachelor's Thesis} % Master's Thesis
 \newcommand{\thesistitle}{Thesis Title}
 \newcommand{\studentname}{Firstname Lastname}
-\newcommand{\monthyear}{October 2025}
+\newcommand{\submissiondate}{\nth{1} October 2025}
 \newcommand{\studentid}{12345678}
-\newcommand{\examiner}{Title Firstname Lastname}
-\newcommand{\secondexaminer}{Prof. Dr. Sebastian Baltes}
+\newcommand{\examiner}{Prof. Dr. Sebastian Baltes}
 \newcommand{\supervisor}{Title Firstname Lastname} % usually a doctoral or postdoctoral researcher
-\newcommand{\ubt}{Heidelberg University, Germany}
+\newcommand{\uhd}{Heidelberg University, Germany}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -37,80 +36,106 @@
 \begin{titlepage}
 
 	\begin{center}
-		\includegraphics[height=2.5cm]{figures/logos/hd_logo_standard_16cm_rgb.png}	
+		\includegraphics[height=1.3cm,valign=t]{figures/logos/logo-uhd.png}	
 		\hfill
-		\includegraphics[height=1.4cm]{figures/logos/se-uhd-logo.png}	
+		\includegraphics[height=1.5cm,valign=t]{figures/logos/se-uhd-logo.png}	
 	\end{center}
 	
-	\vspace{5cm}
-	
+	\vspace{2cm}
+
+    \begin{center}
+        \large
+        Heidelberg University\\
+        Institute of Computer Science\\
+        Software Engineering Group
+    \end{center}
+
+    \vspace{3cm}
+    
 	\begin{center}
 		{\large \thesistype}\\
-		\vspace{1\baselineskip}
-		{\LARGE\textsf{\thesistitle}}\\
-		\vspace{2\baselineskip}
-		{\large \studentname}\\
+		\vspace{1.5\baselineskip}
+		{\LARGE\textsf{\textbf{\thesistitle}}}\\
+        \vspace{1.5\baselineskip}
+        {\large \studentname}
 	\end{center}
 
 	\vfill
-		
-	\begin{center}
-		{\large \monthyear}
-	\end{center}
+
+    \begin{center}
+        \large
+        \begin{tabular}{@{}ll@{}}
+        \emph{Student name:} & \studentname \\
+        \emph{Student ID:} & \studentid \\
+        \emph{Examiner:} & \examiner \\
+        \emph{Topic supervisor:} & \supervisor \\
+        \emph{Submission date:} & \submissiondate
+        \end{tabular}
+    \end{center}
+
+    \vspace{2cm}
 
 \end{titlepage}
 
-% empty page for double-sided printing
-\newpage
-\thispagestyle{empty}
-\mbox{}
-\newpage
-
-\thispagestyle{empty}
+\begin{otherlanguage}{ngerman}
+\chapter*{Eigenständigkeitserklärung}
 	
-\begin{center}
-	{\large\bfseries Heidelberg University}\\
-	\vspace{5pt}
-	Software Engineering Group\\
-	Institute of Computer Science\\
-    Im Neuenheimer Feld 205\\
-    69120 Heidelberg, Germany
-\end{center}
-	
-\vspace{1pt}
-	
-\begin{center}
-	\thesistype \\
-	\vspace{11pt}
-	{\Large\sffamily\thesistitle}\\
-	\vspace{15pt}
-	\studentname \\
-	{\scriptsize Student ID: \studentid}\\
-	\vspace{15pt}
-	\monthyear \\
-\end{center}
-
-\vspace{10pt}
-	
-\begin{center}
-	{\large\sffamily\textbf{{Abstract}}}\\
-\end{center}
-\noindent \lipsum[1-2]
-
-\vfill
-	
+\vspace{1cm}
 \noindent
-\begin{tabularx}{\textwidth}{l X l}
-   Examiner:     & & Supervisor: \\
-   \\
-   \examiner         & & \supervisor \\
-   {\scriptsize (\ubt)} & & {\scriptsize (\ubt)} \\
-   \\
-   \secondexaminer && \\
-   {\scriptsize (\ubt)} & & 
-\end{tabularx}
+% https://www.hochschule-bayern.de/fileadmin/daten/Positionspapiere/KI-Leitlinie_Hochschule-Bayern-19052025.pdf
+% https://www.informatik.uni-heidelberg.de/c/image/f/default/pdfs/BSc-template.pdf
+Hiermit versichere ich, dass ich die vorliegende Arbeit eigenständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel verwendet habe.
+Ich versichere, dass ich die Inhalte meiner Arbeit vollständig verstanden habe und selbstständig vertreten kann.
 
+Alle aus Quellen übernommenen oder mit Unterstützung von KI generierten Inhalte wurden entsprechend den anerkannten wissenschaftlichen Grundsätzen oder entsprechend der geltenden Regelungen zur Kennzeichnung von KI-Inhalten in der Arbeit kenntlich gemacht.
+Ausgenommen von der expliziten Kenntlichmachung sind orthografische oder grammatikalische Korrekturen, Übersetzungen sowie nicht-sinnverändernde Verbesserungen von Formulierungen.
+Ich versichere, dass ich ausschließlich die unten genannten KI-Werkzeuge verwendet habe, deren Nutzung vom Prüfer oder der Prüferin als Hilfsmittel zugelassen wurde.
+Weiterhin erkläre, dass ich die unten genannten KI-Werkzeuge lediglich als Hilfsmittel genutzt habe, die von KI generierten Inhalte kritisch überprüft habe, und mein eigenständiger kognitiver sowie kreativer Einfluss in dieser Arbeit überwiegt.
+
+Ich bin einverstanden, dass diese elektronische Fassung universitätsintern anhand einer Plagiatssoftware auf Plagiate überprüft wird.
+
+Die Arbeit wurde bisher nicht zur Erlangung eines akademischen Grades eingereicht.
+
+% https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-formular-de/download
+% https://backend.heiskills.uni-heidelberg.de/de/dokumente/ai-sample-form-en/download
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\linewidth}{|l|X|X|}
+\hline
+\textbf{KI-Werkzeug} & \textbf{Verwendungszweck} & \textbf{Kommentare (optional)} \\
+\hline
+ChatGPT & Erstellung eines Gliederungsentwurfs. & n/a \\
+\hline
+DeepL & Übersetzung von deutschen Texten ins Englische. & Es erfolgte eine Kontrolle durch einen Muttersprachler. \\ \hline
+Claude Code & Unterstützung bei der Entwicklung des Tool-Prototyps. & Jeglicher generierter Code wurde von mir begutachtet und ggf. überarbeitet. \\
+\hline
+\end{tabularx}
+\caption{Verwendung von KI-Werkzeugen (siehe \href{https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-formular-de/download}{Musterformular} der Universität Heidelberg).}
+\end{table}
+
+\vspace{2cm}
+	
+\noindent\begin{tabularx}{\textwidth}{XXXX}
+	&&& \\
+	\cline{1-1}\cline{4-4}\footnotesize\centering Ort und Datum		&&& \footnotesize\centering Unterschrift
+\end{tabularx}
+	
 \newpage
+
+\chapter*{Zusammenfassung}
+
+Die Zusammenfassung muss auf Deutsch und auf Englisch geschrieben werden. Die Zusammenfassung sollte zwischen einer halben und einer ganzen Seite lang sein. Sie soll den
+Kontext der Arbeit, die Problemstellung, die Zielsetzung und die entwickelten Methoden
+sowie Erkenntnisse bzw. Ergebnisse übersichtlich und verständlich beschreiben.
+
+\end{otherlanguage}
+
+\chapter*{Abstract}
+
+The abstract has to be given in German and English. It should be between half a
+page and one page in length. It should cover in a readable and comprehensive style the
+context of the thesis, the problem setting, the objectives, and the methods developed in
+this thesis as well as key insights and results.
 
 \chapter*{Acknowledgments}
 
@@ -213,54 +238,7 @@ We provide all source code, data, and study materials as part of an online appen
 
 \begin{appendices}
 
-\begin{otherlanguage}{ngerman}
-\chapter{Eigenständigkeitserklärung}
-	
-\vspace{1cm}
-\noindent
-% https://www.hochschule-bayern.de/fileadmin/daten/Positionspapiere/KI-Leitlinie_Hochschule-Bayern-19052025.pdf
-Hiermit versichere ich, dass ich die vorliegende Arbeit eigenständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel verwendet habe.
-Alle übernommenen Inhalte sowie mit Unterstützung von KI-generierten Inhalte wurden entsprechend den anerkannten wissenschaftlichen Grundsätzen oder entsprechend der Regelungen zur Kennzeichnung von KI-Inhalten kenntlich gemacht.
-Ausgenommen von der Kenntlichmachung sind orthografische oder grammatikalische Korrekturen, Übersetzungen sowie nicht-sinnverändernde Verbesserungen von Formulierungen.
-Ich bin mir bewusst, dass mit KI generierte Texte keine Garantie für die Qualität von Inhalten und Text bieten.
-Daher erkläre ich, dass ich die unten genannten KI-Werkzeuge lediglich als Hilfsmittel genutzt habe, die von KI generierten Inhalte kritisch überprüft habe und mein eigenständiger kognitiver sowie kreativer Einfluss in dieser Arbeit überwiegt.
-Ich versichere, dass ich die Inhalte meiner Arbeit vollständig verstanden habe und selbstständig vertreten kann.
-Ich versichere, dass ich ausschließlich KI-Werkzeuge verwendet habe, deren Nutzung vom Prüfer oder der Prüferin als Hilfsmittel zugelassen wurden.
-Die Arbeit wurde bisher nicht zur Erlangung eines akademischen Grades eingereicht. 
-
-% https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-formular-de/download
-% https://backend.heiskills.uni-heidelberg.de/de/dokumente/ai-sample-form-en/download
-\begin{table}[h!]
-\centering
-\begin{tabularx}{\linewidth}{|l|X|X|}
-\hline
-\textbf{KI-Werkzeug} & \textbf{Verwendungszweck} & \textbf{Kommentare (optional)} \\
-\hline
-ChatGPT & Erstellung eines Gliederungsentwurfs & n/a \\
-\hline
-DeepL & Übersetzung von deutschen Texten ins Englische & Es erfolgte eine Kontrolle durch einen Muttersprachler. \\ \hline
-Claude Code & Unterstützung bei der Entwicklung des Prototyps & Jeglicher generierter Code wurde von mir begutachtet und ggf. überarbeitet. \\
-\hline
-\end{tabularx}
-\caption{Verwendung von KI-Werkzeugen (siehe \href{https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-formular-de/download}{Musterformular}).}
-\end{table}
-
-\vspace{1.5cm}
-	
-\noindent\begin{tabularx}{\textwidth}{XXXX}
-	&&& \\
-	\cline{1-1}\cline{4-4}\footnotesize\centering Ort und Datum		&&& \footnotesize\centering Unterschrift
-\end{tabularx}
-	
-\newpage
-
-\chapter{Zusammenfassung}
-
-\selectlanguage{german}
-
-\lipsum[1-4]
-
-\end{otherlanguage}
+\chapter{Appendix Title}
 
 \end{appendices}
 

@@ -126,9 +126,11 @@ Claude Code & Unterstützung bei der Entwicklung des Tool-Prototyps. & Jeglicher
 % seminar-report: begin german-abstract (removed by convert-to-seminar-report.sh)
 \chapter*{Zusammenfassung}
 
-Die Zusammenfassung muss auf Deutsch und auf Englisch geschrieben werden. Die Zusammenfassung sollte zwischen einer halben und einer ganzen Seite lang sein. Sie soll den
+\todo{Write the German abstract.}
+
+\remark{SB}{Die Zusammenfassung muss auf Deutsch und auf Englisch geschrieben werden. Die Zusammenfassung sollte zwischen einer halben und einer ganzen Seite lang sein. Sie soll den
 Kontext der Arbeit, die Problemstellung, die Zielsetzung und die entwickelten Methoden
-sowie Erkenntnisse bzw. Ergebnisse übersichtlich und verständlich beschreiben.
+sowie Erkenntnisse bzw. Ergebnisse übersichtlich und verständlich beschreiben.}
 % seminar-report: end german-abstract
 
 \end{otherlanguage}
@@ -136,14 +138,18 @@ sowie Erkenntnisse bzw. Ergebnisse übersichtlich und verständlich beschreiben.
 \chapter*{Abstract}
 
 % seminar-report: begin abstract (replaced by convert-to-seminar-report.sh)
-The abstract has to be given in German and English. It should be between half a
+\todo{Write the abstract.}
+
+\remark{SB}{The abstract has to be given in German and English. It should be between half a
 page and one page in length. It should cover in a readable and comprehensive style the
 context of the thesis, the problem setting, the objectives, and the methods developed in
-this thesis as well as key insights and results.
+this thesis as well as key insights and results.}
 % seminar-report: end abstract
 
 % seminar-report: begin acknowledgments (removed by convert-to-seminar-report.sh)
 \chapter*{Acknowledgments}
+
+\remark{SB}{This chapter is optional. You can thank the people who supported you during your thesis, such as your supervisors, study participants, or family and friends.}
 
 \lipsum[1-4]
 % seminar-report: end acknowledgments
@@ -162,12 +168,18 @@ this thesis as well as key insights and results.
 % you can use quotations at the start of each chapter using this environment
 \begin{chapter-quotation}{Ward Cunningham, The Pragmatic Programmer (2000)}
 If you don't think carefully, you might think that programming is just typing statements in a programming language.
-\end{chapter-quotation} 
+\end{chapter-quotation}
+
+\todo{Write the introduction.}
+
+\remark{SB}{The introduction outlines the context, background, and motivation of your thesis. You can start from the introduction of your research proposal and update it based on what you learned during the thesis.}
+
+\remark{SB}{Start with the broad context, narrow it down to the problem that your thesis addresses, and argue why the problem matters. Refer to the most important related work and explain the knowledge gap that your thesis closes. Structure the thesis around its outcome rather than the chronological order of your work. After the problem statement and the research questions, summarize your contributions and main results and give an overview of the remaining chapters.}
 
 %exemplary paragraph with citations
 The software engineering research community is often criticized for not addressing the problems that practitioners actually face during their work~\cite{Briand2012}.
 At the same time, software developers' beliefs are rather based on their personal experience than on empirical findings~\cite{DevanbuZimmermannOthers2016}.
-We s\textsf{s}ummarize this discussion in \autoref{ch:background}.
+We summarize this discussion in \autoref{ch:background}.
 
 \begin{java}
 public class HelloWorld {
@@ -181,11 +193,15 @@ If you want to embed quotes, like the one by W. Edwards Deming who said that \en
 
 \todo{Formulate problem statement}
 
+\remark{SB}{State the problem that your thesis addresses in a few sentences. The research questions should follow from it.}
+
 \begin{graybox}{Problem Statement}
 Problem statement.
 \end{graybox}
 
 \todo{Formulate research question(s)}
+
+\remark{SB}{Formulate the objectives of your thesis as research questions. They usually refine the questions from your research proposal. Answer each research question in \autoref{ch:results}.}
 
 \begin{graybox}{Research Questions}
 \begin{description}[style=multiline, labelindent=\parindent, leftmargin=\rqindent, itemsep=-1ex]
@@ -198,42 +214,78 @@ Problem statement.
 \chapter{Background}
 \label{ch:background}
 
+\todo{Write the background chapter.}
+
+\remark{SB}{Introduce the concepts, terminology, and technologies that readers need to follow the rest of the thesis. Cover only what later chapters use, and discuss prior research on the same or a similar problem in \autoref{ch:related-work}.}
+
 \lipsum[1-12]
 
 \chapter{Related Work}
 \label{ch:related-work}
+
+\todo{Write the related work chapter.}
+
+\remark{SB}{Discuss prior research on the problem that your thesis addresses and explain how your work differs from it or builds on it. Group the work by topic or approach instead of summarizing one paper after another. Most papers need only a sentence or two. The related work section of your research proposal is a starting point.}
 
 \lipsum[1-4]
 
 \chapter{Research Method}
 \label{ch:research-method}
 
+\todo{Describe your research method.}
+
+\remark{SB}{Describe how you answer each research question, including the research methods, data collection, participant recruitment, analysis procedures, and statistical methods. State which research question each step answers, and give enough detail for others to replicate your study.}
+
+\remark{SB}{If you built a tool prototype or a pipeline, describe it in \autoref{ch:design} and use this chapter to explain how you evaluate it. For a systematic literature review, name the review guidelines that you follow here and describe the concrete review pipeline in \autoref{ch:design}.}
+
 \lipsum[1-4]
 
 \section{Data Availability}
 \label{sec:data-availability}
 
+\todo{Replace NAME in the URL with the name of your repository.}
+
+\remark{SB}{In case the dataset is too large to host it on GitHub, you can publish the online appendix on Zenodo and reference the Zenodo dataset (example: \url{https://zenodo.org/records/15130575}). You should link the GitHub repository with the source code and version history anyways.}
+
 We provide all source code, data, and study materials as part of an online appendix hosted on GitHub.\footnote{\url{https://github.com/se-uhd/thesis-NAME}}
 
-\todo{In case the dataset is too large to host it on GitHub, you can publish the online appendix on Zenodo and reference the Zenodo dataset (example: \url{https://zenodo.org/records/15130575}. You should link the GitHub repository with the source code and version history anyways.}
+\chapter{Design (and Implementation)}
+\label{ch:design}
 
-\chapter{Tool Architecture}
-\label{ch:tool-architecture}
+\todo{Describe the design and, if applicable, the implementation of your tool or pipeline.}
+
+\remark{SB}{Describe what you built or set up to answer your research questions, such as a tool prototype, a data analysis pipeline, software for an online experiment, or the review pipeline of a systematic literature review, from the search to data extraction.}
+
+\remark{SB}{Most students implement a tool, a data analysis pipeline, or scripts that automate the search or screening of a systematic literature review. If you did, remove only the parentheses from the chapter title. If you did not, for example because you searched and screened the literature manually, title the chapter ``Design''.}
+
+\remark{SB}{Start with an overview of the design, for example an architecture diagram or a figure of the pipeline stages, and explain the main design decisions and the alternatives that you considered. If you implemented the design, describe how you implemented each component or stage, including the technologies, scripts, or tools that you used. Implementation details that do not help readers understand or reuse your work belong in the online appendix (see \autoref{sec:data-availability}). Remove this chapter if your thesis includes no tool or pipeline.}
 
 \lipsum[1-4]
 
 \chapter{Results}
 \label{ch:results}
 
+\todo{Report your results.}
+
+\remark{SB}{Report the results for each research question in the order of the questions. Use tables and figures where they make results easier to compare, and leave the interpretation to \autoref{ch:discussion}.}
+
 \lipsum[1-4]
 
 \chapter{Discussion}
 \label{ch:discussion}
 
+\todo{Discuss your results.}
+
+\remark{SB}{Interpret your results, relate them to the related work, and explain what they mean for researchers and practitioners. Discuss the threats to the validity of your study and how you addressed them. Do not introduce new results in this chapter.}
+
 \lipsum[1-4]
 
 \chapter{Conclusion and Future Work}
 \label{ch:conclusion}
+
+\todo{Write the conclusion.}
+
+\remark{SB}{Summarize the answers to your research questions and your contributions, and outline directions for future work. Do not introduce new results in this chapter.}
 
 \lipsum[1-4]
 
@@ -249,6 +301,12 @@ We provide all source code, data, and study materials as part of an online appen
 \begin{appendices}
 
 \chapter{Title}
+
+\remark{SB}{Use the appendix for material that would interrupt the main chapters, such as interview guides, questionnaires, or additional tables. Remove it if you do not need it.}
+
+% seminar-report: begin online-appendix (removed by convert-to-seminar-report.sh)
+\remark{SB}{Provide all source code, data, and study materials in the online appendix (see \autoref{sec:data-availability}), even if you include parts of them here.}
+% seminar-report: end online-appendix
 
 \end{appendices}
 

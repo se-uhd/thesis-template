@@ -8,6 +8,9 @@ This template can be used for theses and seminar reports written in the Software
 Students are free to modify the template or use a different template.
 However, they need to consider the formatting requirements for [bachelor's](https://www.informatik.uni-heidelberg.de/studium/bachelor/bsc-arbeit) and [master's](https://www.informatik.uni-heidelberg.de/studium/master/msc-thesis) theses.
 
+In `thesis.tex`, `\todo{...}` marks open tasks, and `\remark{SB}{...}` describes the goal of a chapter.
+To hide both, uncomment `\renewcommand\nota[2]{}` in `header.tex`.
+
 ## Seminar Reports
 
 To use the template for a seminar report, run the following script once in the root directory of your copy of the template (on Windows, use Git Bash or WSL):

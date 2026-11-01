@@ -2,14 +2,15 @@
 # Adjusts thesis.tex for a seminar report: sets the document type, switches to a
 # one-sided layout, adapts the declaration of originality, and removes or
 # replaces the blocks marked with "% seminar-report: begin/end <name>" comments
-# (German abstract, abstract, acknowledgments, chapters). The new chapters follow
-# the outline for seminar reports from https://se-uhd.de/theses/q+a.
+# (German abstract, abstract, acknowledgments, chapters, and the remark on the
+# online appendix). The new chapters follow the outline for seminar reports from
+# https://se-uhd.de/theses/q+a.
 set -euo pipefail
 
 cd "$(dirname "$0")"
 file="thesis.tex"
 
-for block in german-abstract abstract acknowledgments chapters; do
+for block in german-abstract abstract acknowledgments chapters online-appendix; do
   if ! grep -qF "% seminar-report: begin $block" "$file"; then
     echo "error: marker for block '$block' missing in $file (already converted?)" >&2
     exit 1
@@ -17,15 +18,19 @@ for block in german-abstract abstract acknowledgments chapters; do
 done
 
 IFS= read -r -d '' ABSTRACT <<'EOF' || true
-The abstract should be between half a page and one page in length.
-It should summarize the topic, the main paper, the additional papers, and the key insights of the report.
+\todo{Write the abstract.}
+
+\remark{SB}{The abstract should be between half a page and one page in length.
+It should summarize the topic, the main paper, the additional papers, and the key insights of the report.}
 EOF
 
 IFS= read -r -d '' CHAPTERS <<'EOF' || true
 \chapter{Introduction}
 \label{ch:introduction}
 
-\todo{Motivate the topic, state the goal of the report, and briefly describe the main paper}
+\todo{Write the introduction.}
+
+\remark{SB}{Motivate the topic, state the goal of the report, and briefly describe the main paper.}
 
 % example paragraph with citations
 The software engineering research community is often criticized for not addressing the problems that practitioners actually face during their work~\cite{Briand2012}.
@@ -34,28 +39,36 @@ At the same time, software developers' beliefs are rather based on their persona
 \chapter{Background}
 \label{ch:background}
 
-\todo{Introduce the concepts needed to understand the main paper and summarize related work}
+\todo{Write the background chapter.}
+
+\remark{SB}{Introduce the concepts needed to understand the main paper and summarize related work.}
 
 \lipsum[1-4]
 
 \chapter{Synthesis}
 \label{ch:synthesis}
 
-\todo{Combine the main paper and the additional papers into a coherent picture of the topic. Structure the chapter by themes that fit your topic (e.g., problems, approaches, or findings) instead of summarizing one paper after another, and point out similarities and differences between the papers. You can split the chapter into sections or several chapters.}
+\todo{Write the synthesis chapter.}
+
+\remark{SB}{Combine the main paper and the additional papers into a coherent picture of the topic. Structure the chapter by themes that fit your topic (e.g., problems, approaches, or findings) instead of summarizing one paper after another, and point out similarities and differences between the papers. You can split the chapter into sections or several chapters.}
 
 \lipsum[1-12]
 
 \chapter{Discussion}
 \label{ch:discussion}
 
-\todo{Critically reflect on the main paper and the additional papers}
+\todo{Write the discussion chapter.}
+
+\remark{SB}{Critically reflect on the main paper and the additional papers.}
 
 \lipsum[1-4]
 
 \chapter{Conclusion}
 \label{ch:conclusion}
 
-\todo{Summarize the key insights and give an outlook and ideas for future work}
+\todo{Write the conclusion.}
+
+\remark{SB}{Summarize the key insights and give an outlook and ideas for future work.}
 
 \lipsum[1-2]
 EOF

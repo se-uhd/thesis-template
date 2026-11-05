@@ -9,7 +9,7 @@
 % fonts
 %\usepackage{mathpazo} % Palatino font (serif)
 %\usepackage{fourier} % Utopia font (serif)
-\usepackage{lmodern} % % Latin Modern Roman (including its typewriter font)
+\usepackage{lmodern} % Latin Modern Roman (helvet and courier below replace its sans-serif and typewriter fonts)
 \usepackage[scaled=0.9]{helvet} % URW Nimbus Sans (Helvetica clone)
 \usepackage{courier} % Courier Font (typewriter)
 
@@ -17,7 +17,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb} 
 \usepackage{eucal} % more curly versions for \mathcal{...}
-\usepackage{nicefrac} % % nicer fractions
+\usepackage{nicefrac} % nicer fractions
 \usepackage{bm} % bold math symbols
 
 % outlined characters
@@ -29,7 +29,7 @@
 \sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
 
 % page margins
-\usepackage[paper=a4paper, inner=30mm, outer=25mm, top=30mm, bottom=25mm, head=21pt]{geometry}
+\usepackage[paper=a4paper, inner=30mm, outer=25mm, top=30mm, bottom=25mm, head=21pt, heightrounded]{geometry} % heightrounded: the text height is a whole number of lines
 
 % references
 \usepackage[square, comma, sort, numbers]{natbib} % sort&compress
@@ -41,6 +41,8 @@
 \clubpenalty = 10000
 % prevent single lines at the end of a paragraph (Hurenkinder)
 \widowpenalty = 10000 \displaywidowpenalty = 10000
+% end a page early instead of stretching the space between paragraphs when a single line would remain
+\raggedbottom
 
 % enables text wrapping around figures.
 \usepackage{wrapfig} 
@@ -54,8 +56,8 @@
 % unnumbered theorem-like environment for definitions
 \usepackage{amsthm}
 \newtheoremstyle{definitiontight}% name
-  {.5\baselineskip\@plus.2\baselineskip\@minus.2\baselineskip}% Space above
-  {.6\baselineskip\@plus.2\baselineskip\@minus.2\baselineskip}% Space below
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}% Space above
+  {.6\baselineskip plus .2\baselineskip minus .2\baselineskip}% Space below
   {}% Body font
   {}%Indent amount (empty = no indent, \parindent = para indent)
   {\bfseries}%  Thm head font
@@ -69,7 +71,8 @@
 % https://tex.stackexchange.com/a/347781/100364
 \renewcommand{\thehypothesis}{\arabic{hypothesis}}% Remove section from theorem counter representation
 
-% colors for boxes, listings, und headers
+% colors for boxes, listings, links, and headers
+\usepackage{xcolor} % load before \definecolor so that the colors are compatible with packages that use xcolor
 \definecolor{light-gray}{gray}{0.97}
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
 \definecolor{darkblue}{rgb}{0.0,0.0,0.6}
@@ -77,30 +80,31 @@
 \definecolor{background-gray}{gray}{0.96}
 
 % configure first page of each chapter (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel)
-\makeatletter% siehe De-TeX-FAQ
+\makeatletter% see the German TeX FAQ (De-TeX-FAQ)
 \renewcommand*{\chapterformat}{
-  \begingroup% damit \unitlength aenderung lokal bleibt
+  \begingroup% keeps the change of \unitlength local
     \setlength{\unitlength}{1mm}%
     \begin{picture}(20,20)(0,3)
       \setlength{\fboxsep}{0pt}
        \put(0,0){\makebox(20,20){\rule{20\unitlength}{20\unitlength}}}%
        %\put(0,21){\makebox(20,20){\rule{20\unitlength}{20\unitlength}}}
-      % Trennlinie
+      % horizontal rule
       \put(22,13){\linethickness{0.5pt}\line(1,0){\dimexpr
           \textwidth-24\unitlength\relax\@gobble}}
-      % Kapitelnummer    
+      % chapter number
       \put(-1.4,0.8){\makebox(18,18)[r]{%
           \color{white}\fontsize{22\unitlength}{28\unitlength}\selectfont\thechapter
-          %\kern-.05em% Ziffer in der Zeichenzelle nach rechts schieben
+          %\kern-.05em% shifts the number to the right within its box
         }}
-      % Kapitel Schriftzug
+      % label "Chapter N"
       \put(20,13){\makebox(\dimexpr
           \textwidth-18\unitlength\relax\@gobble,\ht\strutbox\@gobble)[l]{%
             \ \normalsize\color{black}\chapapp~\thechapter
           }}
-    \end{picture} % <-- Leerzeichen ist hier beabsichtigt!
+    \end{picture} % <-- the space before this comment is intentional
   \endgroup
 }
+\makeatother
 
 % fancy headings (thanks to Fabian Beck, Rainer Lutz, Benjamin Biegel, and ChatGPT)
 \usepackage{scrlayer-scrpage}
@@ -116,8 +120,8 @@
 % configure environment for quotations to be used at the beginning of a chapter (dictum)
 \newcommand{\quotemarks}[1]{{\bfseries{#1}}}
 \newenvironment{chapter-quotation}[1]
-{\begin{quotation}\pushQED{#1}\noindent\slshape\quotemarks{``}\hspace{-2pt}}
-{\hspace{-2pt}\quotemarks{''}\fontsize{10}{10}\normalfont\\{ }\\\hspace*{\fill}---\popQED\end{quotation}}
+{\begin{quotation}\pushQED{#1}\noindent\slshape\quotemarks{``}\ignorespaces}
+{\unskip\quotemarks{''}\par\medskip\noindent\hspace*{\fill}{\normalfont\fontsize{10}{12}\selectfont---\popQED}\end{quotation}}
 %\newenvironment{chapter-quotation}[1]
 %{\pushQED{#1}\begin{quotation}``''}
 %{\begin{flushright}---\popQED\end{flushright}\end{quotation}}
@@ -127,9 +131,9 @@
 
 % editorial commands
 \newcommand{\boxedtext}[1]{\fbox{\scriptsize\bfseries\textsf{#1}}}
-\newcommand{\nota}[2]{
+\newcommand{\nota}[2]{%
 	\boxedtext{#1}
-		{\small$\blacktriangleright$\emph{\textsl{#2}}$\blacktriangleleft$}
+	{\small$\blacktriangleright$\emph{\textsl{#2}}$\blacktriangleleft$}%
 }
 \newcommand{\todo}[1]{{\color{red}\nota{TODO}{#1}}} % important: Remove spacing before and after \todo{}
 \newcommand{\remark}[2]{{\color{blue}\nota{#1}{#2}}} % important: Remove spacing before and after \remark{}
@@ -138,7 +142,7 @@
 
 % customize links and references
 \usepackage[hyphens]{url} % line breaks in URLs
-\usepackage{hyperref}
+\usepackage[colorlinks=true, linkcolor=darkblue, citecolor=darkblue, urlcolor=darkblue]{hyperref} % dark blue links, readable on screen and in print
 \renewcommand{\chapterautorefname}{Chapter}
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\subsectionautorefname}{Section}
@@ -151,10 +155,10 @@
   \renewcommand{\subsubsectionautorefname}{Section}
 }
 
-% allow to configure enumerate/itemize environment
+% configure enumerate, itemize, and description environments
 \usepackage{enumitem}
 
-% use \widthof{<string>} to use as length 
+% arithmetic with lengths, e.g., \widthof{<text>} for the width of a text
 \usepackage{calc}
 
 % boxes for results
@@ -253,6 +257,7 @@
 }}{}
 
 % gray background for table cells
+\usepackage{colortbl} % provides \cellcolor
 \definecolor{VeryLightGray}{rgb}{0.92,0.92,0.92}
 \newcommand{\graybg}{\cellcolor{VeryLightGray}}
 
@@ -282,7 +287,7 @@
 % sub-figures
 \usepackage{subcaption}
 
-\usepackage[export]{adjustbox} % draw boxes around figures
+\usepackage[export]{adjustbox} % adds keys such as valign to \includegraphics (used for the logos on the title page)
 
 % configure quote environment
 \usepackage{quoting}
@@ -298,7 +303,7 @@
 \usepackage{algpseudocode}
 \usepackage{algorithm}
 
-% indention of RQs
+% indentation of RQs
 \newlength{\rqindent}\setlength{\rqindent}{\parindent+\widthof{RQ1\ }}
 
 % appendix

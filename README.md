@@ -24,7 +24,6 @@ The script changes `thesis.tex` as follows:
 * Sets the document type on the cover page to "Seminar Report".
 * Switches to a one-sided layout.
 * Removes the German abstract ("Zusammenfassung") and the acknowledgments.
-* Adapts the Declaration of Originality ("Eigenständigkeitserklärung") to seminar reports.
 * Replaces the thesis chapters with the [outline for seminar reports](https://se-uhd.de/theses/q+a#is-there-a-reportthesis-template).
 
 The script relies on the `% seminar-report` comments in `thesis.tex`, so run it before you edit that file.
@@ -35,5 +34,5 @@ Pull requests with updates and fixes for this template are appreciated!
 
 To get access to example theses written using this template, please reach out to [Prof. Dr. Sebastian Baltes](https://se-uhd.de/people/).
 
-[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg

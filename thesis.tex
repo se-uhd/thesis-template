@@ -10,7 +10,7 @@
     footinclude=false,
     toc=bibliography, % add bibliography to table of contents
     toc=listof % add list of figures and tables to table of contents
-]{scrbook} % documentation: https://de.mirrors.cicku.me/ctan/macros/latex/contrib/koma-script/doc/scrguide-en.pdf
+]{scrbook} % documentation: https://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide-en.pdf
 
 \input{header}
 
@@ -19,11 +19,10 @@
 \newcommand{\thesistype}{Bachelor's Thesis} % Master's Thesis
 \newcommand{\thesistitle}{Thesis Title}
 \newcommand{\studentname}{Firstname Lastname}
-\newcommand{\submissiondate}{\nth{1} October 2025}
+\newcommand{\submissiondate}{\nth{1} Month Year}
 \newcommand{\studentid}{12345678}
 \newcommand{\examiner}{Prof. Dr. Sebastian Baltes}
 \newcommand{\supervisor}{Title Firstname Lastname} % usually a doctoral or postdoctoral researcher
-\newcommand{\uhd}{Heidelberg University, Germany}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -82,21 +81,25 @@
 	
 % https://www.hochschule-bayern.de/fileadmin/daten/Positionspapiere/KI-Leitlinie_Hochschule-Bayern-19052025.pdf
 % https://www.informatik.uni-heidelberg.de/c/image/f/default/pdfs/BSc-template.pdf
-Hiermit versichere ich, dass...
+Hiermit versichere ich, dass \dots
 
 \begin{enumerate}
     \item ich die vorliegende Arbeit eigenständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel verwendet habe.
     \item ich die Inhalte der Arbeit vollständig verstanden habe und selbstständig vertreten kann.
-    \item die Arbeit bisher nicht zur Erlangung eines akademischen Grades eingereicht wurde.
-    \item ich alle aus Quellen übernommene oder mit Unterstützung von KI generierte Inhalte entsprechend anerkannter wissenschaftlicher Grundsätze bzw. den geltenden Regelungen zur Kennzeichnung von KI-Inhalten kenntlich gemacht habe.
+    \item ich die volle Verantwortung für die wissenschaftliche Qualität und den Inhalt der vorliegenden Arbeit, die gewählte Methodik und den Erstellungsprozess sowie die zitierte Literatur übernehme.
+    \item die Arbeit bisher nicht anderweitig als Prüfungsleistung eingereicht wurde.
+    \item ich alle wörtlich oder inhaltlich aus Quellen übernommenen oder mit Unterstützung von KI generierten Inhalte entsprechend \href{https://backend.uni-heidelberg.de/de/dokumente/satzung-zur-sicherung-guter-wissenschaftlicher-praxis-und-zum-umgang-mit-fehlverhalten-in-der/download}{anerkannten wissenschaftlichen Grundsätzen} bzw. den \href{https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-leitlinie-de/download}{geltenden Regelungen zur Kennzeichnung von KI-Inhalten} kenntlich gemacht habe.
     %Ausgenommen von der expliziten Kenntlichmachung sind orthografische oder grammatikalische Korrekturen, Übersetzungen sowie nicht-sinnverändernde Verbesserungen von Formulierungen.
-    \item ich ausschließlich die unten genannten KI-Werkzeuge verwendet habe, deren Nutzung vom Prüfer oder der Prüferin als Hilfsmittel zugelassen wurde.
-    \item ich die unten genannten KI-Werkzeuge lediglich als Hilfsmittel genutzt habe, die von KI generierten Inhalte kritisch überprüft habe, und mein eigenständiger kognitiver sowie kreativer Einfluss in dieser Arbeit überwiegt.
+    \item ich die Arbeit unter Einhaltung der \href{https://www.wissenschaftliche-integritaet.de/de/kodex}{guten wissenschaftlichen Praxis} erstellt habe.
+    \item ich ausschließlich die unten genannten KI-Werkzeuge verwendet habe, deren Nutzung vom Prüfer oder von der Prüferin als Hilfsmittel zugelassen wurde.
+    \item ich die unten genannten KI-Werkzeuge lediglich als Hilfsmittel genutzt habe, die von KI generierten Inhalte kritisch überprüft habe und mein eigenständiger kognitiver sowie kreativer Einfluss in dieser Arbeit überwiegt.
 \end{enumerate}
 
-Ich bin damit einverstanden, dass diese elektronische Fassung universitätsintern anhand einer Plagiatssoftware auf Plagiate überprüft wird.\\
+Ich bin damit einverstanden, dass diese elektronische Fassung universitätsintern mithilfe von KI-Werkzeugen und Plagiatssoftware mit dem Zusatzmaterial der Arbeit abgeglichen sowie auf Plagiate, Inkonsistenzen, Fehler und halluzinierte Informationen überprüft wird.
 
-Verwendete KI-Werkzeugen {\small(basierend auf dem \href{https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-formular-de/download}{Musterformular} der Universität Heidelberg)}:
+\bigskip
+
+Verwendete KI-Werkzeuge {\small(basierend auf dem \href{https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-formular-de/download}{Musterformular} der Universität Heidelberg)}:
 
 % https://backend.heiskills.uni-heidelberg.de/de/dokumente/ki-formular-de/download
 % https://backend.heiskills.uni-heidelberg.de/de/dokumente/ai-sample-form-en/download
@@ -106,10 +109,10 @@ Verwendete KI-Werkzeugen {\small(basierend auf dem \href{https://backend.heiskil
 \hline
 \textbf{KI-Werkzeug} & \textbf{Verwendungszweck} & \textbf{Kommentare (optional)} \\
 \hline
-ChatGPT & Erstellung eines Gliederungsentwurfs. & n/a \\
+ChatGPT & Erstellung eines Gliederungsentwurfs. & -- \\
 \hline
 DeepL & Übersetzung von deutschen Texten ins Englische. & Es erfolgte eine Kontrolle durch einen Muttersprachler. \\ \hline
-Claude Code & Unterstützung bei der Entwicklung des Tool-Prototyps. & Jeglicher generierter Code wurde von mir begutachtet und ggf. überarbeitet. \\
+Claude Code & Unterstützung bei der Entwicklung des Tool-Prototyps. & Jeglicher generierte Code wurde von mir begutachtet und ggf. überarbeitet. \\
 \hline
 \end{tabularx} 
 \end{center}
@@ -140,10 +143,10 @@ sowie Erkenntnisse bzw. Ergebnisse übersichtlich und verständlich beschreiben.
 % seminar-report: begin abstract (replaced by convert-to-seminar-report.sh)
 \todo{Write the abstract.}
 
-\remark{SB}{The abstract has to be given in German and English. It should be between half a
-page and one page in length. It should cover in a readable and comprehensive style the
-context of the thesis, the problem setting, the objectives, and the methods developed in
-this thesis as well as key insights and results.}
+\remark{SB}{The abstract has to be written in German and English. It should be between half a
+page and one page in length. It should describe the context of the thesis, the problem
+setting, the objectives, the methods developed in this thesis, and the key insights and
+results in a clear and readable way.}
 % seminar-report: end abstract
 
 % seminar-report: begin acknowledgments (removed by convert-to-seminar-report.sh)
@@ -154,7 +157,7 @@ this thesis as well as key insights and results.}
 \lipsum[1-4]
 % seminar-report: end acknowledgments
 
-\tableofcontents
+{\hypersetup{linkcolor=black}\tableofcontents} % black entries in the table of contents
 
 %\cleardoublepage
 \clearpage
@@ -176,10 +179,10 @@ If you don't think carefully, you might think that programming is just typing st
 
 \remark{SB}{Start with the broad context, narrow it down to the problem that your thesis addresses, and argue why the problem matters. Refer to the most important related work and explain the knowledge gap that your thesis closes. Structure the thesis around its outcome rather than the chronological order of your work. After the problem statement and the research questions, summarize your contributions and main results and give an overview of the remaining chapters.}
 
-%exemplary paragraph with citations
+% example paragraph with citations
 The software engineering research community is often criticized for not addressing the problems that practitioners actually face during their work~\cite{Briand2012}.
-At the same time, software developers' beliefs are rather based on their personal experience than on empirical findings~\cite{DevanbuZimmermannOthers2016}.
-We summarize this discussion in \autoref{ch:background}.
+At the same time, software developers base their beliefs on personal experience rather than on empirical findings~\cite{DevanbuZimmermannOthers2016}.
+We summarize this discussion in \autoref{ch:related-work}.
 
 \begin{java}
 public class HelloWorld {
@@ -189,9 +192,9 @@ public class HelloWorld {
 }
 \end{java}
 
-If you want to embed quotes, like the one by W. Edwards Deming who said that \enq{without data, you're just another person with an opinion}, you can use the custom \texttt{\textbackslash enq} command.
+To embed quotations, such as the statement attributed to W. Edwards Deming that \enq{without data, you're just another person with an opinion}, use the custom \texttt{\textbackslash enq} command.
 
-\todo{Formulate problem statement}
+\todo{Formulate the problem statement.}
 
 \remark{SB}{State the problem that your thesis addresses in a few sentences. The research questions should follow from it.}
 
@@ -199,7 +202,7 @@ If you want to embed quotes, like the one by W. Edwards Deming who said that \en
 Problem statement.
 \end{graybox}
 
-\todo{Formulate research question(s)}
+\todo{Formulate the research question(s).}
 
 \remark{SB}{Formulate the objectives of your thesis as research questions. They usually refine the questions from your research proposal. Answer each research question in \autoref{ch:results}.}
 
@@ -225,7 +228,7 @@ Problem statement.
 
 \todo{Write the related work chapter.}
 
-\remark{SB}{Discuss prior research on the problem that your thesis addresses and explain how your work differs from it or builds on it. Group the work by topic or approach instead of summarizing one paper after another. Most papers need only a sentence or two. The related work section of your research proposal is a starting point.}
+\remark{SB}{Discuss prior research on the problem that your thesis addresses and explain how your work differs from it or builds on it. Group the work by topic or approach instead of summarizing one paper after another. Most papers only need a sentence or two. The related work section of your research proposal is a starting point.}
 
 \lipsum[1-4]
 
@@ -245,7 +248,7 @@ Problem statement.
 
 \todo{Replace NAME in the URL with the name of your repository.}
 
-\remark{SB}{In case the dataset is too large to host it on GitHub, you can publish the online appendix on Zenodo and reference the Zenodo dataset (example: \url{https://zenodo.org/records/15130575}). You should link the GitHub repository with the source code and version history anyways.}
+\remark{SB}{If the dataset is too large to host on GitHub, you can publish the online appendix on Zenodo and reference the Zenodo dataset (example: \url{https://zenodo.org/records/15130575}). In that case, still link the GitHub repository with the source code and version history.}
 
 We provide all source code, data, and study materials as part of an online appendix hosted on GitHub.\footnote{\url{https://github.com/se-uhd/thesis-NAME}}
 
@@ -292,7 +295,7 @@ We provide all source code, data, and study materials as part of an online appen
 % seminar-report: end chapters
 
 \listoffigures
- 
+
 \listoftables
 
 \bibliographystyle{plainnat}

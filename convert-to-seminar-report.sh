@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Adjusts thesis.tex for a seminar report: sets the document type, switches to a
-# one-sided layout, adapts the declaration of originality, and removes or
-# replaces the blocks marked with "% seminar-report: begin/end <name>" comments
+# one-sided layout, and removes or replaces the blocks marked with "% seminar-report: begin/end <name>" comments
 # (German abstract, abstract, acknowledgments, chapters, and the remark on the
 # online appendix). The new chapters follow the outline for seminar reports from
 # https://se-uhd.de/theses/q+a.
@@ -34,7 +33,7 @@ IFS= read -r -d '' CHAPTERS <<'EOF' || true
 
 % example paragraph with citations
 The software engineering research community is often criticized for not addressing the problems that practitioners actually face during their work~\cite{Briand2012}.
-At the same time, software developers' beliefs are rather based on their personal experience than on empirical findings~\cite{DevanbuZimmermannOthers2016}.
+At the same time, software developers base their beliefs on personal experience rather than on empirical findings~\cite{DevanbuZimmermannOthers2016}.
 
 \chapter{Background}
 \label{ch:background}
@@ -94,14 +93,10 @@ awk '
 
   index($0, "\\newcommand{\\thesistype}") == 1 { print "\\newcommand{\\thesistype}{Seminar Report}"; next }
   $0 ~ /^[ \t]*twoside,/ { print "    oneside, % Prepares the document for one-sided printing"; next }
-  /zur Erlangung eines akademischen Grades eingereicht wurde/ {
-    sub(/zur Erlangung eines akademischen Grades eingereicht wurde/, "als Prüfungsleistung in einer anderen Lehrveranstaltung eingereicht wurde")
-    print; next
-  }
   { print }
 ' "$file" > "$tmp"
 
-for expected in '{Seminar Report}' 'oneside,' 'als Prüfungsleistung' '\chapter{Synthesis}' '\listoffigures'; do
+for expected in '{Seminar Report}' 'oneside,' '\chapter{Synthesis}' '\listoffigures'; do
   if ! grep -qF "$expected" "$tmp"; then
     echo "error: conversion failed ('$expected' missing), $file was not changed" >&2
     exit 1

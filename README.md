@@ -22,7 +22,7 @@ To use the template for a seminar report, run the following script once in the r
 
 The script changes `thesis.tex` as follows:
 
-* Sets the document type on the cover page to "Seminar Report".
+* Sets the document type on the cover page to "Seminar Report" and the title placeholder to "Report Title".
 * Switches to a one-sided layout.
 * Removes the German abstract ("Zusammenfassung") and the acknowledgments.
 * Replaces the thesis chapters with the [structure for seminar reports](https://se-uhd.de/q+a/general#is-there-a-reportthesis-template).

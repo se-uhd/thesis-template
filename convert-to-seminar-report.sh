@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Adjusts thesis.tex for a seminar report: sets the document type, switches to a
+# Adjusts thesis.tex for a seminar report: sets the document type and the title placeholder, switches to a
 # one-sided layout, and removes or replaces the blocks marked with "% seminar-report: begin/end <name>" comments
 # (German abstract, abstract, acknowledgments, chapters, and the remark on the
 # online appendix). The new chapters follow the structure for seminar reports from
@@ -92,11 +92,12 @@ awk '
   drop_blank { drop_blank = 0; if ($0 == "") next }
 
   index($0, "\\newcommand{\\thesistype}") == 1 { print "\\newcommand{\\thesistype}{Seminar Report}"; next }
+  index($0, "\\newcommand{\\thesistitle}") == 1 { print "\\newcommand{\\thesistitle}{Report Title}"; next }
   $0 ~ /^[ \t]*twoside,/ { print "    oneside, % Prepares the document for one-sided printing"; next }
   { print }
 ' "$file" > "$tmp"
 
-for expected in '{Seminar Report}' 'oneside,' '\chapter{Synthesis}' '\listoffigures'; do
+for expected in '{Seminar Report}' '{Report Title}' 'oneside,' '\chapter{Synthesis}' '\listoffigures'; do
   if ! grep -qF "$expected" "$tmp"; then
     echo "error: conversion failed ('$expected' missing), $file was not changed" >&2
     exit 1

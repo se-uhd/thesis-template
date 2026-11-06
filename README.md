@@ -25,7 +25,7 @@ The script changes `thesis.tex` as follows:
 * Sets the document type on the cover page to "Seminar Report".
 * Switches to a one-sided layout.
 * Removes the German abstract ("Zusammenfassung") and the acknowledgments.
-* Replaces the thesis chapters with the [outline for seminar reports](https://se-uhd.de/theses/q+a#is-there-a-reportthesis-template).
+* Replaces the thesis chapters with the [outline for seminar reports](https://se-uhd.de/q+a/general#is-there-a-reportthesis-template).
 
 The script relies on the `% seminar-report` comments in `thesis.tex`, so run it before you edit that file.
 The chapters are the baseline.

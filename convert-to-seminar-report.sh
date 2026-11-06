@@ -3,7 +3,7 @@
 # one-sided layout, and removes or replaces the blocks marked with "% seminar-report: begin/end <name>" comments
 # (German abstract, abstract, acknowledgments, chapters, and the remark on the
 # online appendix). The new chapters follow the outline for seminar reports from
-# https://se-uhd.de/theses/q+a.
+# https://se-uhd.de/q+a/general#is-there-a-reportthesis-template.
 set -euo pipefail
 
 cd "$(dirname "$0")"

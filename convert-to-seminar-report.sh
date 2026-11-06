@@ -51,7 +51,7 @@ At the same time, software developers base their beliefs on personal experience 
 
 \remark{SB}{Combine the main paper and the additional papers into a coherent picture of the topic. Structure the chapter by themes that fit your topic (e.g., problems, approaches, or findings) instead of summarizing one paper after another, and point out similarities and differences between the papers. You can split the chapter into sections or several chapters.}
 
-\lipsum[1-12]
+\lipsum[1-4]
 
 \chapter{Discussion} % (including a critical reflection on the main paper and the additional papers)
 \label{ch:discussion}

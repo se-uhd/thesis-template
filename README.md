@@ -10,6 +10,8 @@ However, they must consider the formatting requirements for [bachelor's](https:/
 The structure of this template is the baseline, and students must agree on the final structure with their supervisor.
 
 In `thesis.tex`, `\todo{...}` marks open tasks, and `\remark{SB}{...}` describes the goal of a chapter.
+The website lists the `\chapter` headings and the comments after them in the [general Q&A](https://se-uhd.de/q+a/general#is-there-a-reportthesis-template), so keep these comments when you change this template.
+In your own thesis, you can delete them.
 To hide both, uncomment `\renewcommand\nota[2]{}` in `header.tex`.
 
 ## Seminar Reports

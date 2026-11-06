@@ -164,8 +164,10 @@ results in a clear and readable way.}
 
 \mainmatter % arabic numbers
 
+% https://se-uhd.de/q+a/general lists the \chapter headings below and the comments after them.
+% You can delete these comments in your thesis.
 % seminar-report: begin chapters (replaced by convert-to-seminar-report.sh)
-\chapter{Introduction}
+\chapter{Introduction} % (including a problem statement)
 \label{ch:introduction}
 
 % you can use quotations at the start of each chapter using this environment
@@ -214,7 +216,7 @@ Problem statement.
 \end{description}
 \end{graybox}
 
-\chapter{Background}
+\chapter{Background} % (can sometimes be integrated into the introduction)
 \label{ch:background}
 
 \todo{Write the background chapter.}
@@ -232,7 +234,7 @@ Problem statement.
 
 \lipsum[1-4]
 
-\chapter{Research Method}
+\chapter{Research Method} % (including a data availability statement)
 \label{ch:research-method}
 
 \todo{Describe your research method.}
@@ -274,7 +276,7 @@ We provide all source code, data, and study materials as part of an online appen
 
 \lipsum[1-4]
 
-\chapter{Discussion}
+\chapter{Discussion} % (including a critical reflection)
 \label{ch:discussion}
 
 \todo{Discuss your results.}
@@ -283,7 +285,7 @@ We provide all source code, data, and study materials as part of an online appen
 
 \lipsum[1-4]
 
-\chapter{Conclusion and Future Work}
+\chapter{Conclusion and Future Work} % (including an outlook)
 \label{ch:conclusion}
 
 \todo{Write the conclusion.}
@@ -299,7 +301,7 @@ We provide all source code, data, and study materials as part of an online appen
 {\hypersetup{linkcolor=black}\listoftables} % black entries in the list of tables
 
 \bibliographystyle{plainnat}
-\bibliography{literature}
+\bibliography{literature} % References
 
 \begin{appendices}
 

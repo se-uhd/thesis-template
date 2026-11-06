@@ -24,7 +24,7 @@ It should summarize the topic, the main paper, the additional papers, and the ke
 EOF
 
 IFS= read -r -d '' CHAPTERS <<'EOF' || true
-\chapter{Introduction}
+\chapter{Introduction} % (including the motivation for the topic, the goal of the report, and a brief description of the main paper)
 \label{ch:introduction}
 
 \todo{Write the introduction.}
@@ -35,7 +35,7 @@ IFS= read -r -d '' CHAPTERS <<'EOF' || true
 The software engineering research community is often criticized for not addressing the problems that practitioners actually face during their work~\cite{Briand2012}.
 At the same time, software developers base their beliefs on personal experience rather than on empirical findings~\cite{DevanbuZimmermannOthers2016}.
 
-\chapter{Background}
+\chapter{Background} % (including related work)
 \label{ch:background}
 
 \todo{Write the background chapter.}
@@ -44,7 +44,7 @@ At the same time, software developers base their beliefs on personal experience 
 
 \lipsum[1-4]
 
-\chapter{Synthesis}
+\chapter{Synthesis} % (a coherent picture of the topic that combines the main paper and the additional papers, structured by themes instead of paper by paper)
 \label{ch:synthesis}
 
 \todo{Write the synthesis chapter.}
@@ -53,7 +53,7 @@ At the same time, software developers base their beliefs on personal experience 
 
 \lipsum[1-12]
 
-\chapter{Discussion}
+\chapter{Discussion} % (including a critical reflection on the main paper and the additional papers)
 \label{ch:discussion}
 
 \todo{Write the discussion chapter.}
@@ -62,7 +62,7 @@ At the same time, software developers base their beliefs on personal experience 
 
 \lipsum[1-4]
 
-\chapter{Conclusion}
+\chapter{Conclusion} % (including an outlook and ideas for future work)
 \label{ch:conclusion}
 
 \todo{Write the conclusion.}
